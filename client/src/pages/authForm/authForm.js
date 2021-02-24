@@ -57,12 +57,6 @@ const AuthForm = props => {
   const [form, setForm] = useState({ email: "", password: "" });
 
 
-  console.log(`
-  user ${user}
-  error ${error}
-  loading ${loading}`)
-
-
   const changeHandler = event => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
@@ -74,10 +68,12 @@ const AuthForm = props => {
   };
 
 
- 
-
   return (
     <div className="container">
+
+      {error && <h2 className="text-center text-danger">{error}</h2>}
+      {user && <h2 className="text-center text-success">{user}</h2>}
+
       <div className="d-flex justify-content-center mt-5">
         {
           loading
