@@ -1,0 +1,5 @@
+{
+  "port": 5000,
+  "jwtSecret":"first fullstack app", 
+  "mongoUri": "mongodb+srv://dominator5530:0986625216@cluster0.es7sm.mongodb.net/fullstack?retryWrites=true&w=majority"
+}
