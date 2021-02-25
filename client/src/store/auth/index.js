@@ -5,8 +5,11 @@ import { Types } from './actions';
 const initialState = {
   user: null,
   loading: false,
-  error: false
+  error: false,
+  userId: null,
+  token: null
 };
+
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -44,7 +47,9 @@ const reducer = (state = initialState, action) => {
     case Types.LOGIN_SUCCESS: {
       return {
         ...state,
-        user: action.payload,
+        user: null,
+        token: action.payload.token,
+        userId: action.payload.userId,
         loading: false,
         error: false,
       }
@@ -55,6 +60,13 @@ const reducer = (state = initialState, action) => {
         user: null,
         error: action.payload,
         loading: false,
+      }
+    }
+    case Types.LOGIN_OUT: {
+      return {
+        ...state,
+        userId: null,
+        token: null
       }
     }
 

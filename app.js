@@ -19,22 +19,10 @@ async function start() {
         })
         app.listen(PORT, () => console.log('We are live on ' + PORT));
     } catch (error) {
-        console.log("Server Error", error.message)
         process.exit(1)
     }
 }
+
 start();
 
 
-
-    // app.use(bodyParser.urlencoded({ extended: true }));
-
-// MongoClient.connect(db.url, (err, client) => {
-//     let database = client.db('notes');
-
-//     if (err) return console.log("ERROR" + err)
-//     require('./app/routes')(app, database); 
-//     app.listen(port, () => {
-//         console.log('We are live on ' + port);
-//     });
-// })

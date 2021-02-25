@@ -32,7 +32,7 @@ const Form = ({ changeHandler, registerHandler, loginHandler, loading, form }) =
           className="form-control"
           name="password"
         />
-        <label className="form-label" htmlFor="password">Password</label>
+        <label className="form-label" htmlFor="password">Password (min 6 symbols)</label>
       </div>
 
       <button
@@ -52,7 +52,7 @@ const Form = ({ changeHandler, registerHandler, loginHandler, loading, form }) =
 
 
 const AuthForm = props => {
-  const { user, error, loading } = props;
+  const { user, error, loading, userId, token } = props;
   const [form, setForm] = useState({ email: "", password: "" });
 
 
@@ -71,6 +71,8 @@ const AuthForm = props => {
     props.login(form);
   };
 
+
+  //console.log("token:", token, "userId:", userId)
 
 
   return (
@@ -103,7 +105,10 @@ const mapStateToProps = state => ({
   user: state.auth.user,
   loading: state.auth.loading,
   error: state.auth.error,
+  token: state.auth.token,
+  userId: state.auth.userId,
 });
+
 
 const mapDispatchToProps = dispatch => ({
   register: (form) => dispatch(getRegisterRequest(form)),

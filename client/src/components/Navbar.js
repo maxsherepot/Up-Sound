@@ -1,9 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { onLogOut } from '../store/auth/actions';
 
 
 
-const Navbar = () => {
+const Navbar = props => {
+
+    const loginOut = () => {
+        localStorage.removeItem("userData");
+        props.logOut();
+    }
 
     return (
         <>
@@ -33,6 +41,10 @@ const Navbar = () => {
                                 <li className="nav-item">
                                     <Link to="/accent" className="nav-link">Second Link</Link>
                                 </li>
+
+                                <button
+                                    onClick={() => loginOut()}
+                                    className="btn btn-sm btn-light ml-5">Log Out</button>
                             </ul>
                         </div>
                     </div>
@@ -44,5 +56,13 @@ const Navbar = () => {
 
 
 
-export default Navbar;
+const mapDispatchToProps = dispatch => ({
+    logOut: () => dispatch(onLogOut())
+});
+
+
+
+export default withRouter(
+    connect(null, mapDispatchToProps)(Navbar)
+);
 
