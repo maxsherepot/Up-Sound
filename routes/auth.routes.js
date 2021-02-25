@@ -61,7 +61,7 @@ router.post(
             if (!errors.isEmpty()) {
                 return res.status(400).json({
                     errors: errors.array(),
-                    message: 'Некорректный данные при входе в систему'
+                    message: 'Некорректныe данные при входе в систему'
                 })
             }
 
@@ -79,9 +79,10 @@ router.post(
 
             const token = jwt.sign(
                 { userId: user.id },
-                config.get('jwtSecret'),
+                config.jwtSecret,
                 { expiresIn: '1h' }
             )
+
             res.json({ token, userId: user.id })
 
         } catch (e) {

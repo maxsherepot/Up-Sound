@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { getRegisterRequest } from "../../store/auth/actions";
+import { getRegisterRequest, getLoginRequest } from "../../store/auth/actions";
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Loader from '../../components/Loader/Loader';
 
 
 
-const Form = ({ changeHandler, registerHandler, loading, form }) => {
+const Form = ({ changeHandler, registerHandler, loginHandler, loading, form }) => {
   return (
     <form
       onSubmit={() => registerHandler()}
@@ -14,7 +14,6 @@ const Form = ({ changeHandler, registerHandler, loading, form }) => {
       <div className="form-outline mb-2">
         <input
           value={form.email}
-          required
           onChange={event => changeHandler(event)}
           type="email"
           id="email"
@@ -26,7 +25,6 @@ const Form = ({ changeHandler, registerHandler, loading, form }) => {
 
       <div className="form-outline mb-4">
         <input
-          required
           onChange={event => changeHandler(event)}
           type="password"
           value={form.password}
@@ -44,6 +42,7 @@ const Form = ({ changeHandler, registerHandler, loading, form }) => {
       >Регістрація</button>
 
       <button
+        onClick={(event) => loginHandler(event)}
         disabled={loading}
         className="btn btn-primary"
       >Вхід</button>
@@ -67,12 +66,18 @@ const AuthForm = props => {
     props.register(form);
   };
 
+  const loginHandler = event => {
+    event.preventDefault();
+    props.login(form);
+  };
+
+
 
   return (
     <div className="container">
 
-      {error && <h2 className="text-center text-danger">{error}</h2>}
-      {user && <h2 className="text-center text-success">{user}</h2>}
+      {error && <h3 className="text-center text-danger">{error}</h3>}
+      {user && <h3 className="text-center text-success">{user}</h3>}
 
       <div className="d-flex justify-content-center mt-5">
         {
@@ -85,6 +90,7 @@ const AuthForm = props => {
               changeHandler={changeHandler}
               registerHandler={registerHandler}
               loading={loading}
+              loginHandler={loginHandler}
             />
         }
       </div>
@@ -101,6 +107,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   register: (form) => dispatch(getRegisterRequest(form)),
+  login: (form) => dispatch(getLoginRequest(form)),
 });
 
 
