@@ -1,7 +1,6 @@
 import React from 'react';
 import "./idPage.scss";
 //import i18n from 'i18next';
-import { withNamespaces } from 'react-i18next';
 
 
 const IdPage = () => {
@@ -15,4 +14,4 @@ const IdPage = () => {
 };
 
 
-export default withNamespaces()(IdPage);
+export default IdPage;

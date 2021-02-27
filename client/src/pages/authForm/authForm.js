@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { getRegisterRequest, getLoginRequest } from "../../store/auth/actions";
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Loader from '../../components/Loader/Loader';
 
@@ -52,7 +51,7 @@ const Form = ({ changeHandler, registerHandler, loginHandler, loading, form }) =
 
 
 const AuthForm = props => {
-  const { user, error, loading, userId, token } = props;
+  const { user, error, loading } = props;
   const [form, setForm] = useState({ email: "", password: "" });
 
 
@@ -71,8 +70,6 @@ const AuthForm = props => {
     props.login(form);
   };
 
-
-  //console.log("token:", token, "userId:", userId)
 
 
   return (
@@ -105,8 +102,6 @@ const mapStateToProps = state => ({
   user: state.auth.user,
   loading: state.auth.loading,
   error: state.auth.error,
-  token: state.auth.token,
-  userId: state.auth.userId,
 });
 
 
@@ -116,6 +111,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(AuthForm)
-);
+export default connect(mapStateToProps, mapDispatchToProps)(AuthForm)

@@ -38,7 +38,6 @@ export const getLoginRequest = data => {
       .then(response => {
         localStorage.setItem("userData",
           JSON.stringify({ userId: response.userId, token: response.token }))
-
         dispatch(onLoginSuccess(response))
       })
       .catch(err => {

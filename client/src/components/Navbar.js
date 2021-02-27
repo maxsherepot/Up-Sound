@@ -32,14 +32,11 @@ const Navbar = props => {
 
                         <div className="collapse navbar-collapse" id="navbarNav">
                             <ul className="navbar-nav">
-                                <li className="nav-item mr-3">
-                                    <Link to="/auth" className="nav-link">Auth</Link>
-                                </li>
-                                <li className="nav-item mr-3">
-                                    <Link to="/idPage" className="nav-link">idPage</Link>
-                                </li>
                                 <li className="nav-item">
-                                    <Link to="/accent" className="nav-link">Second Link</Link>
+                                    <Link to="/mainPage" className="nav-link">MainPage</Link>
+                                </li>
+                                <li className="nav-item mr-3">
+                                    <Link to="/detail/244" className="nav-link">idPage</Link>
                                 </li>
 
                                 <button

@@ -1,26 +1,24 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Accent from './pages/accent/Accent';
+import MainPage from './pages/mainPage/MainPage';
 import AuthForm from './pages/authForm/authForm';
 import IdPage from './pages/idPage/IdPage';
 
 
 
-const Routes = (isAuthenticated) => {
+const Routes = isAuthenticated => {
 
   if (isAuthenticated) {
     return (
       <>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Accent} />
-          <Route exact path="/auth" component={AuthForm} />
-          <Route path="/accent" component={Accent} />
-          <Route path="/withId/:id" component={IdPage} />
-          <Redirect to="/" />
+          <Route path="/mainPage" component={MainPage} exact/>
+          <Route path="/detail/:id" component={IdPage} />
+          <Redirect to="/mainPage" />
         </Switch>
-      </>
+      </ >
     )
   }
 

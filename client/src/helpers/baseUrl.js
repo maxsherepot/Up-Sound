@@ -10,12 +10,5 @@ const axiosInstance = axios.create({
 });
 
 
-// axiosInstance.interceptors.request.use((config) => {
-//   const token = localStorage.getItem('drSoftToken');
-//   config.headers.accessToken = token;
-//   config.headers["Content-Type"] = 'application/json; charset=utf-8';
-//   return config;
-// });
-
 
 export { axiosInstance };

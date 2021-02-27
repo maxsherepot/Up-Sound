@@ -1,19 +1,23 @@
 import { Types } from './actions';
 
 
+const localData = localStorage.getItem("userData")
+  ? JSON.parse(localStorage.getItem("userData"))
+  : null;
+
 
 const initialState = {
   user: null,
   loading: false,
   error: false,
-  userId: null,
-  token: null
+  userData: localData,
 };
 
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
 
+    ////////// REGISTER
     case Types.REGISTER_REQUEST: {
       return {
         ...state,
@@ -37,7 +41,7 @@ const reducer = (state = initialState, action) => {
       }
     }
 
-
+    ////////// LOGIN
     case Types.LOGIN_REQUEST: {
       return {
         ...state,
@@ -48,8 +52,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         user: null,
-        token: action.payload.token,
-        userId: action.payload.userId,
+        userData: action.payload,
         loading: false,
         error: false,
       }
@@ -65,8 +68,7 @@ const reducer = (state = initialState, action) => {
     case Types.LOGIN_OUT: {
       return {
         ...state,
-        userId: null,
-        token: null
+        userData: null,
       }
     }
 
