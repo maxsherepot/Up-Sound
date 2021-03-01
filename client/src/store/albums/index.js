@@ -6,6 +6,7 @@ const initialState = {
   albums: null,
   loading: false,
   error: false,
+  albumId:null
 };
 
 
@@ -15,8 +16,7 @@ const reducer = (state = initialState, action) => {
     case Types.ALBUMS_REQUEST: {
       return {
         ...state,
-        loading: true,
-        //albums: action.payload,
+        loading: true
       }
     }
     case Types.ALBUMS_SUCCESS: {
@@ -35,19 +35,13 @@ const reducer = (state = initialState, action) => {
     }
 
 
-    // case Types.SET_ID_FOR_SKANS: {
-
-    //   return {
-    //     ...state,
-    //     idForSkans: action.payload
-    //   }
-    // }
-    // case Types.SET_TITLE_FOR_SKANS: {
-    //   return {
-    //     ...state,
-    //     titleForSkans: action.payload
-    //   }
-    // }
+    case Types.SET_ID_FOR_ALBUM: {
+      return {
+        ...state,
+        albumId: action.payload
+      }
+    }
+    
 
     default: return state
   };

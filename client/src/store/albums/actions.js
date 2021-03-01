@@ -5,7 +5,7 @@ export const Types = {
   ALBUMS_REQUEST: 'ALBUMS_REQUEST',
   ALBUMS_SUCCESS: 'ALBUMS_SUCCESS',
   ALBUMS_FAILURE: 'ALBUMS_FAILURE',
-  SET_ID_FOR_ALBUMS: 'SET_ID_FOR_ALBUMS',
+  SET_ID_FOR_ALBUM: 'SET_ID_FOR_ALBUM',
 };
 
 
@@ -26,6 +26,9 @@ export const getAlbumsRequest = () => {
   };
 };
 
+export const setIdForAlbum = id => {
+  return setId(id);
+};
 // export const getAlbumsRequest = (id) => {
 //   return dispatch => {
 //     dispatch(startAlbumsRequest());
@@ -41,16 +44,6 @@ export const getAlbumsRequest = () => {
 //       })
 //   };
 // };
-
-// export const setIdForAlbums = (id) => {
-//   return setId(id);
-// };
-
-// const setId = (payload) => ({
-//   type: Types.SET_ID_FOR_ALBUMS,
-//   payload
-// });
-
 
 const startAlbumsRequest = () => ({
   type: Types.ALBUMS_REQUEST
@@ -68,4 +61,9 @@ const getAlbumsFailure = error => ({
   }
 });
 
+
+const setId = payload => ({
+  type: Types.SET_ID_FOR_ALBUM,
+  payload
+});
 

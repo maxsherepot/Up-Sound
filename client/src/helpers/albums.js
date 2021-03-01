@@ -9,13 +9,18 @@ export async function getAlbums() {
   return await axiosInstance.get("albums")
     .then(response => response)
     .catch(err => {
-      if (err.response) {
-        throw new Error(err.response.data.message)
+     // console.log(err)
+      return errorMessage
+    });
+};
 
-      } else if (err.request) {
-        throw new Error(err.request.message)
-      }
 
+export async function getAlbum(id) {
+
+  return await axiosInstance.get("album", id)
+    .then(response => response)
+    .catch(err => {
+     // console.log(err)
       return errorMessage
     });
 };

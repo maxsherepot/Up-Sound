@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import "./mainPage.scss";
 import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setIdForAlbum } from '../../store/albums/actions';
 
 
 
 
-const AlbumCover = ({ item }) => {
+const AlbumCover = ({ item, setId }) => {
   const history = useHistory();
 
   const selectAlbum = id => {
-    history.push(`/albums/${id}`)
+    setId(id);
+    //history.push(`/albums/${id}`)
   };
 
 
   return (
     <div
       className="card"
-      onClick={() => selectAlbum(item._id)}
-    >
+      onClick={() => selectAlbum(item._id)}>
 
       <img
         src={item.image}
@@ -35,5 +37,10 @@ const AlbumCover = ({ item }) => {
 };
 
 
+const mapDispatchToProps = dispatch => ({
+  setId: id => dispatch(setIdForAlbum(id))
+});
 
-export default AlbumCover;
+
+
+export default connect(null, mapDispatchToProps)(AlbumCover);
