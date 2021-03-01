@@ -1,3 +1,27 @@
-// * {
-//   background-color:rgb(157, 164, 177);
-// }
+$special-color: #ff0000;
+
+
+body {
+  background-color:rgb(29, 29, 29);
+}
+
+.specialColor {
+    color:$special-color;
+}
+
+.specialBg {
+    background-color:$special-color;
+}
+
+.card {
+    max-width: 200px;
+    &:hover {
+        transition: 100ms;
+        cursor: pointer;
+        box-shadow: 0px 20px 30px -20px $special-color;
+    }
+}
+
+svg {
+    fill:$special-color
+}

@@ -1,10 +1,8 @@
 import React from 'react';
 import "./idPage.scss";
-//import i18n from 'i18next';
 
 
 const IdPage = () => {
-
 
   return (
     <div className="container">

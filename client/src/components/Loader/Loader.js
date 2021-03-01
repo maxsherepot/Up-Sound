@@ -7,12 +7,14 @@ import Loader from 'react-loader-spinner';
 const Spinner = () => {
 
     return (
-        <Loader
-            type="ThreeDots"
-            color="#00cea3"
-            height={60}
-            width={60}
-        />
+        <div className="text-center">
+            <Loader
+                type="ThreeDots"
+                color="darkgrey"
+                height={60}
+                width={60}
+            />
+        </div>
     );
 }
 

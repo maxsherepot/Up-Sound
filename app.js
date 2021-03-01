@@ -31,38 +31,33 @@
 
 const express = require('express');
 const config = require('./config/default.json');
-const mongoose = require("mongoose");
 const app = express();
 const MongoClient = require("mongodb").MongoClient;
 const jsonParser = express.json();
 const objectId = require("mongodb").ObjectID;
-
 const mongoClient = new MongoClient(config.mongoUri, { useUnifiedTopology: true });
-
 const { Router } = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { check, validationResult } = require("express-validator");
 const User = require("./models/User");
-const router = Router();
-
 
 
 
 let dbClient;
-
 app.use(express.static(__dirname + "/public"));
-
+const PORT = config.port || 5000;
 
 mongoClient.connect(function (err, client) {
     if (err) return console.log(err);
     dbClient = client;
     app.locals.albumsCollection = client.db("fullstack").collection("albums");
     app.locals.usersCollection = client.db("fullstack").collection("users");
-    app.listen(5000, function () {
-        console.log("Сервер ожидает подключения...");
+    app.listen(PORT, function () {
+        console.log(`Live on port ${PORT}`);
     });
 });
+
 
 app.get("/api/albums", function (req, res) {
     const collection = req.app.locals.albumsCollection;
@@ -72,6 +67,7 @@ app.get("/api/albums", function (req, res) {
         res.send(albums)
     });
 });
+
 
 app.get("/api/albums/:id", function (req, res) {
     const id = new objectId(req.params.id);
@@ -94,8 +90,6 @@ app.get("/api/users", function (req, res) {
 });
 
 
-
-// /api/auth/login
 app.post('/api/auth/login', jsonParser,
     [
         check('email', 'Введите корректный email').normalizeEmail().isEmail(),
@@ -136,7 +130,6 @@ app.post('/api/auth/login', jsonParser,
         }
     })
 
-// /api/auth/register
 app.post('/api/auth/register', jsonParser,
     [
         check('email', 'Некорректный email').isEmail(),
@@ -162,11 +155,9 @@ app.post('/api/auth/register', jsonParser,
 
             const hashedPassword = await bcrypt.hash(password, 12)
             const user = new User({ email, password: hashedPassword })
-
             await collection.insertOne(user)
 
             res.status(201).json({ message: 'Пользователь создан' })
-
         } catch (e) {
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
         }

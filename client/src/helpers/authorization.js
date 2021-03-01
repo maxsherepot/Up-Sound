@@ -1,8 +1,8 @@
 import { axiosInstance } from './baseUrl'
 
 
-const errorMessage = "Something went wrong, please try again";
 
+const errorMessage = "Something went wrong, please try again";
 
 export async function register(data) {
 

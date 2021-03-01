@@ -33,18 +33,18 @@ const Form = ({ changeHandler, registerHandler, loginHandler, loading, form }) =
         />
         <label className="form-label" htmlFor="password">Password (min 6 symbols)</label>
       </div>
+      <button
+        onClick={(event) => loginHandler(event)}
+        disabled={loading}
+        className="btn specialBg"
+      >Login</button>
 
       <button
         disabled={loading}
         onClick={(event) => registerHandler(event)}
-        className="btn btn-dark"
-      >Регістрація</button>
+        className="btn btn-dark specialColor"
+      >Register</button>
 
-      <button
-        onClick={(event) => loginHandler(event)}
-        disabled={loading}
-        className="btn btn-primary"
-      >Вхід</button>
     </form>
   );
 };
