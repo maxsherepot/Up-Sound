@@ -3,22 +3,19 @@ import "./mainPage.scss";
 import { getAlbums } from "../../helpers/albums";
 import Loader from "../../components/Loader/Loader"
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
+import AlbumCover from './AlbumCover';
+import { connect } from "react-redux";
+import { getAlbumsRequest } from "../../store/albums/actions";
 
 
 
-const MainPage = () => {
-
-  const [albums, setAlbums] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-
+const MainPage = props => {
+  const { getAlbums, loading, error, albums } = props;
 
   useEffect(() => {
     getAlbums()
-      .then(res => setAlbums(res))
-      .then(setLoading(false))
-      .catch(err => setError(err))
   }, [getAlbums]);
+
 
   return (
     <div className="container">
@@ -29,27 +26,12 @@ const MainPage = () => {
         error ?
           <ErrorMessage />
           :
-
           <div className="d-flex justify-content-between mt-5">
-
             {albums &&
               albums.map(item => {
-                return (
-                  <div key={item._id}
-                    className="card">
-
-                    <img
-                      src={item.image}
-                      className="card-img-top cursor-pointer bg-image hover-zoom"
-                      alt="..."
-                    />
-                    <div className="card-body p-2 text-center bg-dark text-light">
-                      <h5 className="card-title cursor-pointer">{item.title}</h5>
-                      <h6 className="">{item.author}</h6>
-                      <span>{item.year}</span>
-                    </div>
-                  </div>
-                )
+                return <AlbumCover
+                  key={item._id}
+                  item={item} />
               })
             }
           </div>
@@ -59,5 +41,17 @@ const MainPage = () => {
 };
 
 
+const mapStateToProps = state => ({
+  albums: state.albums.albums,
+  loading: state.albums.loading,
+  error: state.albums.error,
+});
 
-export default MainPage;
+
+const mapDispatchToProps = dispatch => ({
+  getAlbums: () => dispatch(getAlbumsRequest())
+})
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

@@ -15,7 +15,7 @@ const Routes = isAuthenticated => {
         <Navbar />
         <Switch>
           <Route path="/mainPage" component={MainPage} exact/>
-          <Route path="/detail/:id" component={IdPage} />
+          <Route path="/albums/:id" component={IdPage} />
           <Redirect to="/mainPage" />
         </Switch>
       </ >

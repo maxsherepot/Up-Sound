@@ -36,7 +36,7 @@ const Navbar = props => {
                                     <Link to="/mainPage" className="nav-link">MainPage</Link>
                                 </li>
                                 <li className="nav-item mr-3">
-                                    <Link to="/detail/244" className="nav-link">idPage</Link>
+                                    <Link to="/albums/244" className="nav-link">idPage</Link>
                                 </li>
 
                                 <button
