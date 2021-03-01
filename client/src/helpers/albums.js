@@ -9,7 +9,7 @@ export async function getAlbums() {
   return await axiosInstance.get("albums")
     .then(response => response)
     .catch(err => {
-     // console.log(err)
+      // console.log(err)
       return errorMessage
     });
 };
@@ -17,10 +17,11 @@ export async function getAlbums() {
 
 export async function getAlbum(id) {
 
-  return await axiosInstance.get("album", id)
+  return await axiosInstance.get(`albums/${id}`)
     .then(response => response)
+
     .catch(err => {
-     // console.log(err)
+      console.log(err)
       return errorMessage
     });
 };

@@ -12,23 +12,23 @@ const AlbumCover = ({ item, setId }) => {
 
   const selectAlbum = id => {
     setId(id);
-    //history.push(`/albums/${id}`)
+    history.push(`/albums/${id}`)
   };
 
 
   return (
     <div
-      className="card"
+      className="card darkShadow"
       onClick={() => selectAlbum(item._id)}>
 
       <img
         src={item.image}
-        className="card-img-top cursor-pointer bg-image hover-zoom"
+        className="card-img-top"
         alt="..."
       />
 
-      <div className="card-body p-2 text-center bg-dark text-light">
-        <h5 className="card-title cursor-pointer">{item.title}</h5>
+      <div className="card-body p-3 text-center bg-dark text-light">
+        <h5 className="card-title">{item.title}</h5>
         <h6 className="">{item.author}</h6>
         <span>{item.year}</span>
       </div>

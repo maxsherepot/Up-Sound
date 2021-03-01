@@ -4,6 +4,7 @@ import { Types } from './actions';
 
 const initialState = {
   albums: null,
+  album: null,
   loading: false,
   error: false,
   albumId:null
@@ -27,6 +28,27 @@ const reducer = (state = initialState, action) => {
       }
     }
     case Types.ALBUMS_FAILURE: {
+      return {
+        ...state,
+        error: action.payload,
+        loading: false,
+      }
+    }
+
+    case Types.ALBUM_REQUEST: {
+      return {
+        ...state,
+        loading: true
+      }
+    }
+    case Types.ALBUM_SUCCESS: {
+      return {
+        ...state,
+        album: action.payload,
+        loading: false,
+      }
+    }
+    case Types.ALBUM_FAILURE: {
       return {
         ...state,
         error: action.payload,

@@ -19,7 +19,7 @@ const Form = ({ changeHandler, registerHandler, loginHandler, loading, form }) =
           className="form-control"
           name="email"
         />
-        <label className="form-label" htmlFor="email">Email address</label>
+        <label className="form-label text-light" htmlFor="email">Email address</label>
       </div>
 
       <div className="form-outline mb-4">
@@ -31,18 +31,19 @@ const Form = ({ changeHandler, registerHandler, loginHandler, loading, form }) =
           className="form-control"
           name="password"
         />
-        <label className="form-label" htmlFor="password">Password (min 6 symbols)</label>
+        <label className="form-label text-light" htmlFor="password">Password (min 6 symbols)</label>
       </div>
+
       <button
         onClick={(event) => loginHandler(event)}
         disabled={loading}
-        className="btn specialBg"
+        className="btn specialBg loginButton"
       >Login</button>
 
       <button
         disabled={loading}
         onClick={(event) => registerHandler(event)}
-        className="btn btn-dark specialColor"
+        className="btn btn-dark specialColor registerButton"
       >Register</button>
 
     </form>
