@@ -19,6 +19,7 @@ mongoClient.connect(function (err, client) {
     dbClient = client;
     app.locals.albumsCollection = client.db("fullstack").collection("albums");
     app.locals.usersCollection = client.db("fullstack").collection("users");
+    app.locals.favoritesCollection = client.db("fullstack").collection("favorites");
     app.listen(PORT, function () {
         console.log(`Live on port ${PORT}`);
     });

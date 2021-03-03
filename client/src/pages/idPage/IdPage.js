@@ -8,19 +8,19 @@ import AlbumInfo from './AlbumInfo';
 
 
 const IdPage = props => {
-  const { getAlbum, albumId, loading, error } = props;
+  const { getAlbum, albumId, album, loading, error } = props;
 
-  const album = {
-    author: "Travis Scott",
-    image: "http://a10.gaanacdn.com/images/albums/3/2203403/crop_480x480_2203403.jpg",
-    title: "STARGAZING ",
-    year: "2018",
-    _id: "603cd0dadc393230795ce530"
-  }
+  // const album = {
+  //   author: "Travis Scott",
+  //   image: "http://a10.gaanacdn.com/images/albums/3/2203403/crop_480x480_2203403.jpg",
+  //   title: "STARGAZING ",
+  //   year: "2018",
+  //   _id: "603cd0dadc393230795ce530"
+  // }
 
-  // useEffect(() => {
-  //   getAlbum(albumId)
-  // }, [getAlbum]);
+  useEffect(() => {
+    getAlbum(albumId)
+  }, [getAlbum]);
 
   console.log("album", album);
 

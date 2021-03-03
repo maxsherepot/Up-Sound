@@ -38,6 +38,9 @@ const Navbar = props => {
                                 <li className="nav-item mr-3">
                                     <Link to="/albums/244" className="nav-link">idPage</Link>
                                 </li>
+                                <li className="nav-item mr-3">
+                                    <Link to="/favorites" className="nav-link">Favorites</Link>
+                                </li>
 
                                 <button
                                     onClick={() => loginOut()}

@@ -1,8 +1,23 @@
 import React, { useEffect, useState } from 'react';
 
+import {addToFavorites,getFavorites} from "../../helpers/albums"
+
+
 
 
 const AlbumInfo = ({ album }) => {
+
+
+  const toFavorites = (item) => {
+    //console.log(item.title, item.year)
+    addToFavorites({...item})
+  }
+
+  const showFavorites = () => {
+    //console.log(item.title, item.year)
+    getFavorites()
+  }
+
 
   return (
     <div className="mt-5">
@@ -49,9 +64,19 @@ const AlbumInfo = ({ album }) => {
 
               <div className="toFavoriteButton">
                 <button
+                  onClick={() => toFavorites(album)}
                   className="btn btn-dark specialColor favoriteButton">
                   Add to favorites
               </button>
+
+
+                <button
+                  onClick={() => showFavorites(album)}
+                  className="btn btn-dark specialColor favoriteButton">
+                  Show favorites
+              </button>
+
+
               </div>
             </div>
           </div>

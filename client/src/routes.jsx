@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import MainPage from './pages/mainPage/MainPage';
 import AuthForm from './pages/authForm/authForm';
 import IdPage from './pages/idPage/IdPage';
+import FavoritesPage from './pages/favorites/FavoritesPage';
 
 
 
@@ -14,8 +15,9 @@ const Routes = isAuthenticated => {
       <>
         <Navbar />
         <Switch>
-          <Route path="/mainPage" component={MainPage} exact/>
+          <Route path="/mainPage" component={MainPage} exact />
           <Route path="/albums/:id" component={IdPage} />
+          <Route path="/favorites" component={FavoritesPage}/>
           <Redirect to="/mainPage" />
         </Switch>
       </ >
