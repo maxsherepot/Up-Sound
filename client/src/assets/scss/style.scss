@@ -13,7 +13,7 @@ body {
     background-color:$special-color;
 }
 
-.card,.loginButton, .registerButton {
+.card,.loginButton, .registerButton,.favoriteButton{
     max-width: 200px;
     &:hover {
         transition: 100ms;
@@ -32,4 +32,17 @@ svg {
 
 .darkShadow {
     box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.651);
+}
+
+.albumButton {
+    //border: 1px solid red;
+    height: 3rem;
+    width: 8rem;
+    max-width: 100px;
+    border-radius: .125rem;
+    &:hover {
+        transition: 100ms;
+        cursor: pointer;
+        box-shadow: 0px 20px 30px -20px $special-color;
+    }
 }
