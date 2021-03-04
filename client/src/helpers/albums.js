@@ -7,12 +7,11 @@ const errorMessage = "Something went wrong, please try again";
 
 
 export async function getFavorites(email) {
-  const userData = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')) : null
+  // const userData = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')) : null
   //const token = userData.token;
 
   return await axiosInstance.get(`albums/favorites/${email}`)
-    .then(response =>
-      console.log("getFavorites response:", response))
+    .then(response => response.data)
     .catch(err => {
       console.log("getFavorites error:", err)
       return errorMessage
