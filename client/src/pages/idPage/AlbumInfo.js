@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
-
-import {addToFavorites,getFavorites} from "../../helpers/albums"
-
+import { addToFavorites, getFavorites } from "../../helpers/albums"
 
 
 
 const AlbumInfo = ({ album }) => {
 
+  const userData = JSON.parse(localStorage.getItem("userData"))
+  const email = userData.email;
 
   const toFavorites = (item) => {
-    //console.log(item.title, item.year)
-    addToFavorites({...item})
+    addToFavorites({ email, ...item })
   }
 
   const showFavorites = () => {
-    //console.log(item.title, item.year)
-    getFavorites()
+    getFavorites( email )
   }
 
 

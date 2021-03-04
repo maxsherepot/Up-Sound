@@ -22,7 +22,7 @@ const IdPage = props => {
     getAlbum(albumId)
   }, [getAlbum]);
 
-  console.log("album", album);
+  //console.log("album", album);
 
   return (
     <div className="container">

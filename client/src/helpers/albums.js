@@ -6,18 +6,11 @@ const errorMessage = "Something went wrong, please try again";
 
 
 
-export async function getFavorites() {
+export async function getFavorites(email) {
   const userData = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')) : null
-  const token = userData.token;
-  //console.log(data)
+  //const token = userData.token;
 
-  const header = {
-    headers: {
-      'Authorization': `${token}`
-    },
-  }
-
-  return await axiosInstance.get("albums/favorites", header)
+  return await axiosInstance.get(`albums/favorites/${email}`)
     .then(response =>
       console.log("getFavorites response:", response))
     .catch(err => {
@@ -31,7 +24,6 @@ export async function addToFavorites(data) {
   const userData = localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')) : null
   const token = userData.token;
   //console.log(data)
-
   const header = {
     headers: {
       'Authorization': `${token}`
@@ -47,8 +39,6 @@ export async function addToFavorites(data) {
       return errorMessage
     });
 };
-
-
 
 
 export async function getAlbums() {

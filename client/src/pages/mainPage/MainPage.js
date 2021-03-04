@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import "./mainPage.scss";
-import { getAlbums } from "../../helpers/albums";
 import Loader from "../../components/Loader/Loader"
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
 import AlbumCover from './AlbumCover';

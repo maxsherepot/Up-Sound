@@ -6,6 +6,7 @@ const schema = new Schema({
     image: { type: String, required: true },
     title: { type: String, required: true },
     year: { type: String, required: true },
+    email: { type: String, required: true },
     //owner: {type: Types.ObjectId, ref: 'User'}
 })
 
