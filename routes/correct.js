@@ -1,4 +1,0 @@
-
-
-// models/User/  links
-// Adaptive

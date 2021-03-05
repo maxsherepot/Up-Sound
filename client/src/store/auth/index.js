@@ -2,8 +2,10 @@ import { Types } from './actions';
 
 
 const localData = localStorage.getItem("userData")
-  ? JSON.parse(localStorage.getItem("userData"))
-  : null;
+  ?
+  JSON.parse(localStorage.getItem("userData"))
+  :
+  null;
 
 
 const initialState = {
@@ -17,7 +19,6 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
 
-    ////////// REGISTER
     case Types.REGISTER_REQUEST: {
       return {
         ...state,
@@ -41,7 +42,6 @@ const reducer = (state = initialState, action) => {
       }
     }
 
-    ////////// LOGIN
     case Types.LOGIN_REQUEST: {
       return {
         ...state,
@@ -65,6 +65,7 @@ const reducer = (state = initialState, action) => {
         loading: false,
       }
     }
+    
     case Types.LOGIN_OUT: {
       return {
         ...state,

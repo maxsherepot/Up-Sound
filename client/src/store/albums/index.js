@@ -100,7 +100,6 @@ const reducer = (state = initialState, action) => {
       }
     }
 
-
     case Types.SET_ID_FOR_ALBUM: {
       return {
         ...state,
@@ -108,7 +107,6 @@ const reducer = (state = initialState, action) => {
       }
     }
     
-
     default: return state
   };
 };

@@ -1,6 +1,7 @@
 import { getAlbums, getAlbum, getFavoriteAlbums, getFavoriteAlbum } from '../../helpers/albums';
 
 
+
 export const Types = {
   ALBUMS_REQUEST: 'ALBUMS_REQUEST',
   ALBUMS_SUCCESS: 'ALBUMS_SUCCESS',
@@ -20,7 +21,6 @@ export const Types = {
 
   SET_ID_FOR_ALBUM: 'SET_ID_FOR_ALBUM',
 };
-
 
 
 export const getAlbumsRequest = () => {
@@ -61,7 +61,6 @@ export const getAlbumRequest = id => {
 
     getAlbum(id)
       .then(res => {
-
         if (res.status === 200) {
           dispatch(getAlbumSuccess(res.data));
 
@@ -78,7 +77,6 @@ export const getFavoriteAlbumRequest = id => {
 
     getFavoriteAlbum(id)
       .then(res => {
-
         if (res.status === 200) {
           dispatch(getFavoriteAlbumSuccess(res.data));
 
@@ -106,9 +104,7 @@ const getAlbumsSuccess = payload => ({
 
 const getAlbumsFailure = error => ({
   type: Types.ALBUMS_FAILURE,
-  payload: {
-    error
-  }
+  payload: { error }
 });
 
 
@@ -123,9 +119,7 @@ const getFavoriteAlbumsSuccess = payload => ({
 
 const getFavoriteAlbumsFailure = error => ({
   type: Types.FAVORITE_ALBUMS_FAILURE,
-  payload: {
-    error
-  }
+  payload: { error }
 });
 
 
@@ -140,9 +134,7 @@ const getAlbumSuccess = payload => ({
 
 const getAlbumFailure = error => ({
   type: Types.ALBUM_FAILURE,
-  payload: {
-    error
-  }
+  payload: { error }
 });
 
 
@@ -157,9 +149,7 @@ const getFavoriteAlbumSuccess = payload => ({
 
 const getFavoriteAlbumFailure = error => ({
   type: Types.FAVORITE_ALBUM_FAILURE,
-  payload: {
-    error
-  }
+  payload: { error }
 });
 
 

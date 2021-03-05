@@ -1,4 +1,4 @@
-const { Schema, model, Types } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 
 const schema = new Schema({
@@ -7,7 +7,6 @@ const schema = new Schema({
     title: { type: String, required: true },
     year: { type: String, required: true },
     email: { type: String, required: true },
-    //owner: {type: Types.ObjectId, ref: 'User'}
 })
 
 

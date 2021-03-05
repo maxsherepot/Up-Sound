@@ -14,7 +14,6 @@ export const Types = {
 };
 
 
-
 export const getRegisterRequest = data => {
   return dispatch => {
     dispatch(startRegisterRequest());
@@ -29,26 +28,34 @@ export const getRegisterRequest = data => {
   }
 }
 
-
 export const getLoginRequest = data => {
   return dispatch => {
     dispatch(startLoginRequest());
-
+    
     login(data)
       .then(response => {
         localStorage.setItem("userData",
           JSON.stringify({
             userId: response.userId, token: response.token, email: data.email
           }))
-        dispatch(onLoginSuccess(response))
-      })
+          dispatch(onLoginSuccess(response))
+        })
       .catch(err => {
         dispatch(onLoginFailure(err.message))
       })
   }
 }
 
-////////// REGISTER
+export const onLoginSuccess = payload => ({
+  type: Types.LOGIN_SUCCESS,
+  payload
+});
+
+export const onLogOut = () => ({
+  type: Types.LOGIN_OUT,
+});
+
+
 const startRegisterRequest = () => ({
   type: Types.REGISTER_REQUEST
 });
@@ -63,19 +70,8 @@ const onRegisterFailure = payload => ({
   payload
 });
 
-
-////////// LOGIN
 const startLoginRequest = () => ({
   type: Types.LOGIN_REQUEST
-});
-
-export const onLoginSuccess = payload => ({
-  type: Types.LOGIN_SUCCESS,
-  payload
-});
-
-export const onLogOut = () => ({
-  type: Types.LOGIN_OUT,
 });
 
 const onLoginFailure = payload => ({
