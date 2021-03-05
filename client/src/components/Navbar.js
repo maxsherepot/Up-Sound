@@ -13,44 +13,43 @@ const Navbar = props => {
         props.logOut();
     }
 
+
     return (
-        <>
-            <header className="header">
-                <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                    <div className="container-fluid">
-                        <span className="navbar-brand mr-5" >Navbar</span>
-                        <button
-                            className="navbar-toggler"
-                            type="button"
-                            data-mdb-toggle="collapse"
-                            data-mdb-target="#navbarNav"
-                            aria-controls="navbarNav"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <i className="fas fa-bars"></i>
-                        </button>
+        <header className="header">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div className="container-fluid">
+                    <span className="navbar-brand mr-5" >Navbar</span>
+                    <button
+                        className="navbar-toggler"
+                        type="button"
+                        data-mdb-toggle="collapse"
+                        data-mdb-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <i className="fas fa-bars"></i>
+                    </button>
 
-                        <div className="collapse navbar-collapse" id="navbarNav">
-                            <ul className="navbar-nav">
-                                <li className="nav-item">
-                                    <Link to="/mainPage" className="nav-link">MainPage</Link>
-                                </li>
-                                {/* <li className="nav-item mr-3">
-                                    <Link to="/albums/244" className="nav-link">idPage</Link>
-                                </li> */}
-                                <li className="nav-item mr-3">
-                                    <Link to="/favorites" className="nav-link">Favorites</Link>
-                                </li>
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav">
 
-                                <button
-                                    onClick={() => loginOut()}
-                                    className="btn btn-sm btn-light ml-5">Log Out</button>
-                            </ul>
-                        </div>
+                            <li className="nav-item">
+                                <Link to="/albums" className="nav-link">Albums</Link>
+                            </li>
+
+                            <li className="nav-item mr-3">
+                                <Link to="/favorites" className="nav-link">Favorites</Link>
+                            </li>
+
+                            <button
+                                onClick={() => loginOut()}
+                                className="btn btn-sm btn-light ml-5">Log Out
+                                </button>
+                        </ul>
                     </div>
-                </nav>
-            </header>
-        </>
+                </div>
+            </nav>
+        </header>
     );
 };
 

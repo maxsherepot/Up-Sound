@@ -1,35 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from "react-redux";
-import Loader from '../../components/Loader/Loader';
+import Loader from '../../components/loader/Loader';
 import { getFavoriteAlbumRequest } from "../../store/albums/actions";
-import FavoriteAlbumInfo from './FavoriteAlbumInfo';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import ErrorMessage from '../../components/errorMessage/ErrorMessage';
+import FavoriteAlbum from "./FavoriteAlbum";
 
 
 
-const FavoritesInfo = props => {
+const FavoriteAlbumInfo = props => {
   const { getFavoriteAlbum, albumId, favoriteAlbum, loading, error } = props;
 
   useEffect(() => {
     getFavoriteAlbum(albumId)
   }, [albumId]);
 
-  //console.log("albumId", albumId);
-  console.log("favoriteAlbum", favoriteAlbum);
 
 
   return (
     <div className="container">
-
       {loading || !favoriteAlbum ?
         <Loader />
         :
         error ?
           <ErrorMessage/>
           :
-          <FavoriteAlbumInfo album={favoriteAlbum} />
+          <FavoriteAlbum album={favoriteAlbum}/>
       }
-
     </div>
   );
 };
@@ -47,5 +43,5 @@ const mapDispatchToProps = dispatch => ({
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(FavoritesInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(FavoriteAlbumInfo);
 

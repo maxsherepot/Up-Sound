@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import "./mainPage.scss";
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setIdForAlbum } from '../../store/albums/actions';
 
 
 
-
-const AlbumCover = ({ item, setId, albumIsFavorite }) => {
+const AlbumCard = ({ item, setId, albumIsFavorite }) => {
   const history = useHistory();
 
   const selectAlbum = id => {
     setId(id);
-    //console.log(("albumIsFavorite", albumIsFavorite));
-    //console.log(("id", id));
-    albumIsFavorite ?
+    albumIsFavorite
+      ?
       history.push(`/favorites/${id}`)
       :
       history.push(`/albums/${id}`)
@@ -48,4 +45,4 @@ const mapDispatchToProps = dispatch => ({
 
 
 
-export default connect(null, mapDispatchToProps)(AlbumCover);
+export default connect(null, mapDispatchToProps)(AlbumCard);

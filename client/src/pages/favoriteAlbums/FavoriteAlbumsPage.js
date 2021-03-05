@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import "./favoritesPage.scss";
-import Loader from "../../components/Loader/Loader"
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
+import React, { useEffect } from 'react';
+import Loader from "../../components/loader/Loader"
+import ErrorMessage from "../../components/errorMessage/ErrorMessage"
 import { connect } from "react-redux";
 import { getFavoriteAlbumsRequest } from "../../store/albums/actions";
-import AlbumCard from "../mainPage/AlbumCard";
+import AlbumCard from "../../components/albums/AlbumCard";
 
 
 
-const FavoritesPage = props => {
+const FavoriteAlbumsPage = props => {
   const { getFavoriteAlbums, loading, error, favoriteAlbums } = props;
 
   const userData = JSON.parse(localStorage.getItem("userData") || null)
@@ -20,7 +19,6 @@ const FavoritesPage = props => {
   }, []);
 
 
-  //console.log("favoriteAlbums",favoriteAlbums);
 
   return (
     <div className="container">
@@ -65,5 +63,4 @@ const mapDispatchToProps = dispatch => ({
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(FavoritesPage);
-//export default FavoritesPage;
+export default connect(mapStateToProps, mapDispatchToProps)(FavoriteAlbumsPage);

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import MainPage from './pages/mainPage/MainPage';
-import AuthForm from './pages/authForm/authForm';
-import IdPage from './pages/idPage/IdPage';
-import FavoritesPage from './pages/favorites/FavoritesPage';
-import FavoritesInfo from './pages/favoritesInfo/FavoritesInfo';
+import AuthForm from './pages/authForm/AuthForm';
+import AlbumInfo from './pages/albumInfo/AlbumInfo';
+import FavoriteAlbumsPage from './pages/favoriteAlbums/FavoriteAlbumsPage';
+import FavoriteAlbumInfo from './pages/favoriteAlbumInfo/FavoriteAlbumInfo';
+import AlbumsPage from './pages/albums/AlbumsPage';
 
 
 
@@ -16,11 +16,11 @@ const Routes = isAuthenticated => {
       <>
         <Navbar />
         <Switch>
-          <Route path="/mainPage" component={MainPage} exact />
-          <Route path="/albums/:id" component={IdPage} />
-          <Route path="/favorites" component={FavoritesPage} exact />
-          <Route path="/favorites/:id" component={FavoritesInfo} />
-          <Redirect to="/mainPage" />
+          <Route path="/albums" component={AlbumsPage} exact />
+          <Route path="/albums/:id" component={AlbumInfo} />
+          <Route path="/favorites" component={FavoriteAlbumsPage} exact />
+          <Route path="/favorites/:id" component={FavoriteAlbumInfo} />
+          <Redirect to="/albums" />
         </Switch>
       </ >
     )

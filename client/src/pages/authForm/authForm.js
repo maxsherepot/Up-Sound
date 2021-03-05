@@ -1,60 +1,14 @@
 import React, { useState } from 'react';
 import { getRegisterRequest, getLoginRequest } from "../../store/auth/actions";
 import { connect } from 'react-redux';
-import Loader from '../../components/Loader/Loader';
+import Loader from '../../components/loader/Loader';
+import FormInput from './FormInput';
 
-
-
-const Form = ({ changeHandler, registerHandler, loginHandler, loading, form }) => {
-  return (
-    <form
-      onSubmit={() => registerHandler()}
-      className="mt-5">
-      <div className="form-outline mb-2">
-        <input
-          value={form.email}
-          onChange={event => changeHandler(event)}
-          type="email"
-          id="email"
-          className="form-control"
-          name="email"
-        />
-        <label className="form-label text-light" htmlFor="email">Email address</label>
-      </div>
-
-      <div className="form-outline mb-4">
-        <input
-          onChange={event => changeHandler(event)}
-          type="password"
-          value={form.password}
-          id="password"
-          className="form-control"
-          name="password"
-        />
-        <label className="form-label text-light" htmlFor="password">Password (min 6 symbols)</label>
-      </div>
-
-      <button
-        onClick={(event) => loginHandler(event)}
-        disabled={loading}
-        className="btn specialBg loginButton"
-      >Login</button>
-
-      <button
-        disabled={loading}
-        onClick={(event) => registerHandler(event)}
-        className="btn btn-dark specialColor registerButton"
-      >Register</button>
-
-    </form>
-  );
-};
 
 
 const AuthForm = props => {
   const { user, error, loading } = props;
   const [form, setForm] = useState({ email: "", password: "" });
-
 
   const changeHandler = event => {
     setForm({ ...form, [event.target.name]: event.target.value });
@@ -72,7 +26,6 @@ const AuthForm = props => {
   };
 
 
-
   return (
     <div className="container">
 
@@ -85,7 +38,7 @@ const AuthForm = props => {
             ?
             <Loader />
             :
-            <Form
+            <FormInput
               form={form}
               changeHandler={changeHandler}
               registerHandler={registerHandler}

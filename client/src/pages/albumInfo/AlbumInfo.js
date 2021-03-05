@@ -1,22 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import "./idPage.scss";
+import React, { useEffect } from 'react';
 import { connect } from "react-redux";
-import Loader from '../../components/Loader/Loader';
+import Loader from '../../components/loader/Loader';
 import { getAlbumRequest } from "../../store/albums/actions";
-import AlbumInfo from './AlbumInfo';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import Album from './Album';
+import ErrorMessage from '../../components/errorMessage/ErrorMessage';
 
 
 
-const IdPage = props => {
+const AlbumInfo = props => {
   const { getAlbum, albumId, album, loading, error } = props;
 
   useEffect(() => {
     getAlbum(albumId)
   }, [albumId]);
-
-  //console.log("albumId", albumId);
-  console.log("album", album);
 
 
   return (
@@ -28,7 +24,7 @@ const IdPage = props => {
         error ?
           <ErrorMessage/>
           :
-          <AlbumInfo album={album} />
+          <Album album={album} />
       }
 
     </div>
@@ -48,5 +44,5 @@ const mapDispatchToProps = dispatch => ({
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(IdPage);
+export default connect(mapStateToProps, mapDispatchToProps)(AlbumInfo);
 

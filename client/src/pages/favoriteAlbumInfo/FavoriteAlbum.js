@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { addToFavorites, getFavoriteAlbums } from "../../helpers/albums"
+import React from 'react';
+import { addToFavorites } from "../../helpers/albums";
 
 
 
-const AlbumInfo = ({ album }) => {
+const FavoriteAlbum = ({ album }) => {
 
   const userData = JSON.parse(localStorage.getItem("userData"))
   const email = userData.email;
 
-  const toFavorites = (item) => {
+  const toFavorites = item => {
     addToFavorites({ email, ...item })
   }
-
-  // const showFavorites = () => {
-  //   getFavoriteAlbums( email )
-  // }
 
 
   return (
@@ -29,7 +25,6 @@ const AlbumInfo = ({ album }) => {
         </div>
 
         <div className="col-8 text-light pt-5 pl-5">
-
           <div className="AlbumInformation">
             <h4 className="card-title specialColor">{album.title}</h4>
             <h5 className="">{album.author}</h5>
@@ -67,27 +62,14 @@ const AlbumInfo = ({ album }) => {
                   Add to favorites
               </button>
 
-
-                <button
-                  //onClick={() => showFavorites(album)}
-                  className="btn btn-dark specialColor favoriteButton">
-                  Show favorites
-              </button>
-
-
               </div>
             </div>
           </div>
-
-
         </div>
-
       </div>
     </div>
   );
 };
 
 
-
-
-export default AlbumInfo
+export default FavoriteAlbum

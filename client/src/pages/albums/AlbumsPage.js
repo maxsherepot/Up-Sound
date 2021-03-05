@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import "./mainPage.scss";
-import Loader from "../../components/Loader/Loader"
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
-import AlbumCard from './AlbumCard';
+import React, { useEffect } from 'react';
+import Loader from "../../components/loader/Loader"
+import ErrorMessage from "../../components/errorMessage/ErrorMessage"
+import AlbumCard from '../../components/albums/AlbumCard';
 import { connect } from "react-redux";
 import { getAlbumsRequest } from "../../store/albums/actions";
 
@@ -15,7 +14,6 @@ const MainPage = props => {
     getAlbums()
   }, []);
 
-  //console.log("albums", albums);
 
   return (
     <div className="container">
@@ -56,7 +54,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getAlbums: () => dispatch(getAlbumsRequest())
 })
-
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
