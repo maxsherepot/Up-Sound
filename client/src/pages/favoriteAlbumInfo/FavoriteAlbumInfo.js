@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Loader from '../../components/loader/Loader';
 import { getFavoriteAlbumRequest } from "../../store/albums/actions";
 import ErrorMessage from '../../components/errorMessage/ErrorMessage';
-import FavoriteAlbum from "./FavoriteAlbum";
+import AlbumDetails from '../../components/albums/AlbumDetails';
 
 
 
@@ -22,9 +22,12 @@ const FavoriteAlbumInfo = props => {
         <Loader />
         :
         error ?
-          <ErrorMessage/>
+          <ErrorMessage />
           :
-          <FavoriteAlbum album={favoriteAlbum}/>
+          <AlbumDetails
+            album={favoriteAlbum}
+            isFavorite={true}
+          />
       }
     </div>
   );

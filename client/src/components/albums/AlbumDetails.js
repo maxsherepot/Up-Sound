@@ -1,14 +1,20 @@
 import React from 'react';
 import { addToFavorites } from "../../helpers/albums";
+//import { addToFavorites,deleteFromFavorites } from "../../helpers/albums";
 
 
 
-const Album = ({ album }) => {
+const AlbumDetails = ({ album, isFavorite }) => {
   const userData = JSON.parse(localStorage.getItem("userData"))
   const email = userData.email;
 
   const toFavorites = item => {
     addToFavorites({ email, ...item })
+  }
+
+  const deleteFavorite = item => {
+    console.log("deleteFavorite id", item._id)
+    //deleteFromFavorites({ email, ...item })
   }
 
 
@@ -55,22 +61,28 @@ const Album = ({ album }) => {
                 </button>
               </div>
 
-              <div className="toFavoriteButton">
-                <button
-                  onClick={() => toFavorites(album)}
-                  className="btn btn-dark specialColor favoriteButton">
-                  Add to favorites
-              </button>
+              {
+                isFavorite
+                  ?
+                  <button
+                    onClick={() => deleteFavorite(album)}
+                    className="btn btn-dark specialColor favoriteButton px-3">
+                    Delete from favorites </button>
+                  :
+                  <button
+                    onClick={() => toFavorites(album)}
+                    className="btn btn-dark specialColor favoriteButton">
+                    Add to favorites</button>
+              }
 
-              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
 
 
-export default Album;
+export default AlbumDetails;

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from "react-redux";
 import Loader from '../../components/loader/Loader';
 import { getAlbumRequest } from "../../store/albums/actions";
-import Album from './Album';
+import AlbumDetails from '../../components/albums/AlbumDetails';
 import ErrorMessage from '../../components/errorMessage/ErrorMessage';
 
 
@@ -22,9 +22,12 @@ const AlbumInfo = props => {
         <Loader />
         :
         error ?
-          <ErrorMessage/>
+          <ErrorMessage />
           :
-          <Album album={album} />
+          <AlbumDetails
+            album={album}
+            isFavorite={false}
+          />
       }
 
     </div>
