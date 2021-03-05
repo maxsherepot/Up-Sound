@@ -3,7 +3,7 @@ import { addToFavorites, getFavoriteAlbums } from "../../helpers/albums"
 
 
 
-const AlbumInfo = ({ album }) => {
+const FavoriteAlbumInfo = ({ album }) => {
 
   const userData = JSON.parse(localStorage.getItem("userData"))
   const email = userData.email;
@@ -90,4 +90,4 @@ const AlbumInfo = ({ album }) => {
 
 
 
-export default AlbumInfo
+export default FavoriteAlbumInfo

@@ -7,12 +7,17 @@ import { setIdForAlbum } from '../../store/albums/actions';
 
 
 
-const AlbumCover = ({ item, setId }) => {
+const AlbumCover = ({ item, setId, albumIsFavorite }) => {
   const history = useHistory();
 
   const selectAlbum = id => {
     setId(id);
-    history.push(`/albums/${id}`)
+    //console.log(("albumIsFavorite", albumIsFavorite));
+    //console.log(("id", id));
+    albumIsFavorite ?
+      history.push(`/favorites/${id}`)
+      :
+      history.push(`/albums/${id}`)
   };
 
 

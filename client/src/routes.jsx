@@ -5,6 +5,7 @@ import MainPage from './pages/mainPage/MainPage';
 import AuthForm from './pages/authForm/authForm';
 import IdPage from './pages/idPage/IdPage';
 import FavoritesPage from './pages/favorites/FavoritesPage';
+import FavoritesInfo from './pages/favoritesInfo/FavoritesInfo';
 
 
 
@@ -17,7 +18,8 @@ const Routes = isAuthenticated => {
         <Switch>
           <Route path="/mainPage" component={MainPage} exact />
           <Route path="/albums/:id" component={IdPage} />
-          <Route path="/favorites" component={FavoritesPage}/>
+          <Route path="/favorites" component={FavoritesPage} exact />
+          <Route path="/favorites/:id" component={FavoritesInfo} />
           <Redirect to="/mainPage" />
         </Switch>
       </ >

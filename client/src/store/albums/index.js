@@ -5,6 +5,8 @@ import { Types } from './actions';
 const initialState = {
   albums: null,
   album: null,
+  favoriteAlbums: null,
+  favoriteAlbum: null,
   loading: false,
   error: false,
   albumId:null
@@ -35,6 +37,27 @@ const reducer = (state = initialState, action) => {
       }
     }
 
+    case Types.FAVORITE_ALBUMS_REQUEST: {
+      return {
+        ...state,
+        loading: true
+      }
+    }
+    case Types.FAVORITE_ALBUMS_SUCCESS: {
+      return {
+        ...state,
+        favoriteAlbums: action.payload,
+        loading: false,
+      }
+    }
+    case Types.FAVORITE_ALBUMS_FAILURE: {
+      return {
+        ...state,
+        error: action.payload,
+        loading: false,
+      }
+    }
+
     case Types.ALBUM_REQUEST: {
       return {
         ...state,
@@ -49,6 +72,27 @@ const reducer = (state = initialState, action) => {
       }
     }
     case Types.ALBUM_FAILURE: {
+      return {
+        ...state,
+        error: action.payload,
+        loading: false,
+      }
+    }
+
+    case Types.FAVORITE_ALBUM_REQUEST: {
+      return {
+        ...state,
+        loading: true
+      }
+    }
+    case Types.FAVORITE_ALBUM_SUCCESS: {
+      return {
+        ...state,
+        favoriteAlbum: action.payload,
+        loading: false,
+      }
+    }
+    case Types.FAVORITE_ALBUM_FAILURE: {
       return {
         ...state,
         error: action.payload,

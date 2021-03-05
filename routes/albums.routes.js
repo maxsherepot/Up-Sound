@@ -19,7 +19,7 @@ router.get('/favorites/:email', async (req, res) => {
         if (err) {
             res.status(500).json({ message: 'favorites error' })
         }
-        res.status(201).send(favorites)
+        res.status(200).send(favorites)
     });
 });
 
@@ -66,7 +66,20 @@ router.get('/:id', async (req, res) => {
         if (err) {
             res.status(500).json({ message: 'album id error' })
         }
-        res.status(201).send(album)
+        res.send(album)
+    });
+});
+
+router.get('/favorites/favoriteAlbum/:id', async (req, res) => {
+    const id = new objectId(req.params.id);
+
+    const collection = req.app.locals.favoritesCollection;
+    collection.findOne({ _id: id }, function (err, album) {
+
+        if (err) {
+            res.status(500).json({ message: 'favorite album id error' })
+        }
+        res.send(album)
     });
 });
 

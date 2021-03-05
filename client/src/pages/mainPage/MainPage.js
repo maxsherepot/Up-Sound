@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import "./mainPage.scss";
 import Loader from "../../components/Loader/Loader"
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
-import AlbumCover from './AlbumCover';
+import AlbumCard from './AlbumCard';
 import { connect } from "react-redux";
 import { getAlbumsRequest } from "../../store/albums/actions";
 
@@ -13,8 +13,9 @@ const MainPage = props => {
 
   useEffect(() => {
     getAlbums()
-  }, [getAlbums]);
+  }, []);
 
+  //console.log("albums", albums);
 
   return (
     <div className="container">
@@ -25,15 +26,20 @@ const MainPage = props => {
         error ?
           <ErrorMessage />
           :
-          <div className="d-flex justify-content-between mt-5">
-            {albums &&
-              albums.map(item => {
-                return <AlbumCover
-                  key={item._id}
-                  item={item} />
-              })
-            }
-          </div>
+          !albums.length
+            ?
+            <h3 className="text-light text-center">No albums yet</h3>
+            :
+            <div className="d-flex justify-content-between mt-5">
+              {albums &&
+                albums.map(item => {
+                  return <AlbumCard
+                    key={item._id}
+                    item={item}
+                    albumIsFavorite={false} />
+                })
+              }
+            </div>
       }
     </div>
   );
