@@ -1,6 +1,5 @@
 import React from 'react';
-import { addToFavorites } from "../../helpers/albums";
-//import { addToFavorites,deleteFromFavorites } from "../../helpers/albums";
+import { addToFavorites, deleteFromFavorites } from "../../helpers/albums";
 
 
 
@@ -13,8 +12,7 @@ const AlbumDetails = ({ album, isFavorite }) => {
   }
 
   const deleteFavorite = item => {
-    console.log("deleteFavorite id", item._id)
-    //deleteFromFavorites({ email, ...item })
+    deleteFromFavorites(item._id)
   }
 
 

@@ -26,6 +26,19 @@ export async function addToFavorites(data) {
 };
 
 
+export async function deleteFromFavorites(id) {
+
+  return await axiosInstance.delete(`albums/favorites/${id}`)
+    .then(response =>
+      console.log("deleteFromFavorites response:", response.data))
+
+    .catch(err => {
+      console.log("deleteFromFavorites error:", err)
+      return err
+    });
+};
+
+
 export async function getAlbums() {
 
   return await axiosInstance.get("albums")

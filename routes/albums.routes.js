@@ -38,6 +38,24 @@ router.post('/favorites', jsonParser, async (req, res) => {
 })
 
 
+router.delete('/favorites/:id', jsonParser, async (req, res) => {
+    const collection = req.app.locals.favoritesCollection;
+    const id = new objectId(req.params.id);
+
+    try {
+        const existing = await collection.findOne({ _id: id })
+        if (!existing) {
+            return res.status(400).json({ message: 'no such album' })
+        }
+        await collection.deleteOne({ _id: id })
+        res.json({ message: 'album deleted' })
+
+    } catch (e) {
+        res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+    }
+})
+
+
 router.get('', async (req, res) => {
     const collection = req.app.locals.albumsCollection;
     collection.find({}).toArray(function (err, albums) {
