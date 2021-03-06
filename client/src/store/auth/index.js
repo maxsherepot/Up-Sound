@@ -45,7 +45,8 @@ const reducer = (state = initialState, action) => {
     case Types.LOGIN_REQUEST: {
       return {
         ...state,
-        loading: true
+        loading: true,
+        error: false
       }
     }
     case Types.LOGIN_SUCCESS: {

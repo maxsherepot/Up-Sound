@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getRegisterRequest, getLoginRequest } from "../../store/auth/actions";
 import { connect } from 'react-redux';
 import Loader from '../../components/loader/Loader';
 import FormInput from './FormInput';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const AuthForm = props => {
@@ -14,6 +15,19 @@ const AuthForm = props => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
 
+  useEffect(() => {
+    toast.error(error, {
+      position: "top-right",
+      autoClose: 3000,
+    })
+  }, [error])
+
+  useEffect(() => {
+    toast.success(user, {
+      position: "top-right",
+      autoClose: 3000,
+    })
+  }, [user])
 
   const registerHandler = event => {
     event.preventDefault();
@@ -28,10 +42,7 @@ const AuthForm = props => {
 
   return (
     <div className="container">
-
-      {error && <h3 className="text-center text-danger">{error}</h3>}
-      {user && <h3 className="text-center text-success">{user}</h3>}
-
+      <ToastContainer />
       <div className="d-flex justify-content-center mt-5">
         {
           loading
