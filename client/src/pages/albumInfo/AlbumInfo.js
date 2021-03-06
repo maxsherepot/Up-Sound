@@ -1,23 +1,46 @@
 import React, { useEffect } from 'react';
 import { connect } from "react-redux";
 import Loader from '../../components/loader/Loader';
-import { getAlbumRequest } from "../../store/albums/actions";
+import { getAlbumRequest, addToFavoritesRequest } from "../../store/albums/actions";
 import AlbumDetails from '../../components/albums/AlbumDetails';
 import ErrorMessage from '../../components/errorMessage/ErrorMessage';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
 const AlbumInfo = props => {
-  const { getAlbum, albumId, album, loading, error } = props;
+  const { getAlbum, albumId, album, loading, error, errorMessage, successMessage, addToFavorites } = props;
+  const userData = JSON.parse(localStorage.getItem("userData"))
+  const email = userData.email;
 
   useEffect(() => {
     getAlbum(albumId)
-  }, [albumId]);
+  }, []);
+
+  useEffect(() => {
+    toast.error(errorMessage, {
+      position: "top-right",
+      autoClose: 3000,
+    })
+  }, [errorMessage])
+
+  useEffect(() => {
+    toast.success(successMessage, {
+      position: "top-right",
+      autoClose: 3000,
+    })
+  }, [successMessage])
+
+  const toFavorites = item => {
+    addToFavorites({ email, ...item })
+    //console.log("{ email, ...item }",{ email, ...item })
+  }
 
 
   return (
     <div className="container">
-
+      <ToastContainer />
       {loading || !album ?
         <Loader />
         :
@@ -27,6 +50,7 @@ const AlbumInfo = props => {
           <AlbumDetails
             album={album}
             isFavorite={false}
+            addToFavorites={toFavorites}
           />
       }
 
@@ -38,11 +62,17 @@ const AlbumInfo = props => {
 const mapStateToProps = state => ({
   albumId: state.albums.albumId,
   album: state.albums.album,
+
+  loading: state.albums.loading,
+  error: state.albums.error,
+  errorMessage: state.albums.errorMessage,
+  successMessage: state.albums.successMessage,
 });
 
 
 const mapDispatchToProps = dispatch => ({
-  getAlbum: albumId => dispatch(getAlbumRequest(albumId))
+  getAlbum: albumId => dispatch(getAlbumRequest(albumId)),
+  addToFavorites: data => dispatch(addToFavoritesRequest(data))
 })
 
 

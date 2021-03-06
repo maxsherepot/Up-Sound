@@ -16,12 +16,13 @@ export async function getFavoriteAlbums(email) {
 export async function addToFavorites(data) {
 
   return await axiosInstance.post("albums/favorites", data)
-    .then(response =>
-      console.log("addToFavorites response:", response))
+    .then(response => response.data.message)
+    //console.log("response.data.message:", response.data.message))
+    //  return response.data.message
 
     .catch(err => {
-      console.log("addToFavorites error:", err)
-      return err
+      return err.message
+      // console.log("err.message", err.message)
     });
 };
 
@@ -29,12 +30,12 @@ export async function addToFavorites(data) {
 export async function deleteFromFavorites(id) {
 
   return await axiosInstance.delete(`albums/favorites/${id}`)
-    .then(response =>
-      console.log("deleteFromFavorites response:", response.data))
+    .then(response => response.data.message)
+    //console.log("response.data.message:", response.data.message))
 
     .catch(err => {
-      console.log("deleteFromFavorites error:", err)
-      return err
+      return err.message
+      //console.log("err.message", err.message)
     });
 };
 

@@ -3,12 +3,12 @@ import { addToFavorites, deleteFromFavorites } from "../../helpers/albums";
 
 
 
-const AlbumDetails = ({ album, isFavorite }) => {
-  const userData = JSON.parse(localStorage.getItem("userData"))
-  const email = userData.email;
+const AlbumDetails = ({ album, isFavorite,addToFavorites }) => {
+  // const userData = JSON.parse(localStorage.getItem("userData"))
+  // const email = userData.email;
 
   const toFavorites = item => {
-    addToFavorites({ email, ...item })
+    addToFavorites( item )
   }
 
   const deleteFavorite = item => {

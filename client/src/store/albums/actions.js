@@ -1,4 +1,10 @@
-import { getAlbums, getAlbum, getFavoriteAlbums, getFavoriteAlbum } from '../../helpers/albums';
+import {
+  getAlbums,
+  getAlbum,
+  getFavoriteAlbums,
+  getFavoriteAlbum,
+  addToFavorites
+} from '../../helpers/albums';
 
 
 
@@ -18,6 +24,14 @@ export const Types = {
   FAVORITE_ALBUM_REQUEST: 'FAVORITE_ALBUM_REQUEST',
   FAVORITE_ALBUM_SUCCESS: 'FAVORITE_ALBUM_SUCCESS',
   FAVORITE_ALBUM_FAILURE: 'FAVORITE_ALBUM_FAILURE',
+
+  ADD_TO_FAVORITES_REQUEST: 'ADD_TO_FAVORITES_REQUEST',
+  ADD_TO_FAVORITES_SUCCESS: 'ADD_TO_FAVORITES_SUCCESS',
+  ADD_TO_FAVORITES_FAILURE: 'ADD_TO_FAVORITES_FAILURE',
+
+  DELETE_FROM_FAVORITES_REQUEST: 'DELETE_FROM_FAVORITES_REQUEST',
+  DELETE_FROM_FAVORITES_SUCCESS: 'DELETE_FROM_FAVORITES_SUCCESS',
+  DELETE_FROM_FAVORITES_FAILURE: 'DELETE_FROM_FAVORITES_FAILURE',
 
   SET_ID_FOR_ALBUM: 'SET_ID_FOR_ALBUM',
 };
@@ -50,6 +64,22 @@ export const getFavoriteAlbumsRequest = email => {
 
         } else {
           dispatch(getFavoriteAlbumsFailure(res));
+        }
+      })
+  };
+};
+
+export const addToFavoritesRequest = data => {
+  return dispatch => {
+    dispatch(startAddToFavoritesRequest());
+
+    addToFavorites(data)
+      .then(res => {
+        if (res.status === 200 || 304) {
+          dispatch(addToFavoritesSuccess(res));
+
+        } else {
+          dispatch(addToFavoritesFailure(res));
         }
       })
   };
@@ -91,6 +121,21 @@ export const setIdForAlbum = id => {
   return setId(id);
 };
 
+
+
+const startAddToFavoritesRequest = () => ({
+  type: Types.ADD_TO_FAVORITES_REQUEST
+});
+
+const addToFavoritesSuccess = payload => ({
+  type: Types.ADD_TO_FAVORITES_SUCCESS,
+  payload
+});
+
+const addToFavoritesFailure = error => ({
+  type: Types.ADD_TO_FAVORITES_FAILURE,
+  payload: { error }
+});
 
 
 const startAlbumsRequest = () => ({
