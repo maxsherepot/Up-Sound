@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from "react-redux";
 import Loader from '../../components/loader/Loader';
-import { getAlbumRequest, addToFavoritesRequest } from "../../store/albums/actions";
+import { getAlbumRequest, addToFavoritesRequest,deleteFromFavoritesRequest } from "../../store/albums/actions";
 import AlbumDetails from '../../components/albums/AlbumDetails';
 import ErrorMessage from '../../components/errorMessage/ErrorMessage';
 import { ToastContainer, toast } from 'react-toastify';
@@ -32,24 +32,10 @@ const AlbumInfo = props => {
     }
   }, [errorMessage, successMessage]);
 
-  // useEffect(() => {
-  //   toast.error(errorMessage, {
-  //     position: "top-right",
-  //     autoClose: 3000,
-  //   })
-  // }, [errorMessage])
-
-  // useEffect(() => {
-  //   toast.success(successMessage, {
-  //     position: "top-right",
-  //     autoClose: 3000,
-  //   })
-  // }, [successMessage])
-
   const toFavorites = item => {
     addToFavorites({ email, ...item })
-  }
-  console.log("errorMessage:", errorMessage, "successMessage:", successMessage)
+  } 
+  //console.log("errorMessage:", errorMessage, "successMessage:", successMessage)
 
 
   return (
@@ -85,7 +71,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getAlbum: albumId => dispatch(getAlbumRequest(albumId)),
-  addToFavorites: data => dispatch(addToFavoritesRequest(data))
+  addToFavorites: data => dispatch(addToFavoritesRequest(data)),
 })
 
 

@@ -30,12 +30,13 @@ export async function addToFavorites(data) {
 export async function deleteFromFavorites(id) {
 
   return await axiosInstance.delete(`albums/favorites/${id}`)
-    .then(response => response.data.message)
+    .then(response => response)
     //console.log("response.data.message:", response.data.message))
-
     .catch(err => {
+      if (err.response) {
+        return err.response.data.message
+      }
       return err.message
-      //console.log("err.message", err.message)
     });
 };
 

@@ -3,7 +3,8 @@ import {
   getAlbum,
   getFavoriteAlbums,
   getFavoriteAlbum,
-  addToFavorites
+  addToFavorites,
+  deleteFromFavorites
 } from '../../helpers/albums';
 
 
@@ -85,6 +86,22 @@ export const addToFavoritesRequest = data => {
   };
 };
 
+export const deleteFromFavoritesRequest = id => {
+  return dispatch => {
+    dispatch(startDeleteFromFavoritesRequest());
+
+    deleteFromFavorites(id)
+      .then(res => {
+        if (res.status === 200 ) {
+          dispatch(deleteFromFavoritesSuccess(res.data.message));
+
+        } else {
+          dispatch(deleteFromFavoritesFailure(res));
+        }
+      })
+  };
+};
+
 export const getAlbumRequest = id => {
   return dispatch => {
     dispatch(startAlbumRequest());
@@ -121,6 +138,21 @@ export const setIdForAlbum = id => {
   return setId(id);
 };
 
+
+
+const startDeleteFromFavoritesRequest = () => ({
+  type: Types.DELETE_FROM_FAVORITES_REQUEST
+});
+
+const deleteFromFavoritesSuccess = payload => ({
+  type: Types.DELETE_FROM_FAVORITES_SUCCESS,
+  payload
+});
+
+const deleteFromFavoritesFailure = error => ({
+  type: Types.DELETE_FROM_FAVORITES_FAILURE,
+  payload: error
+});
 
 
 const startAddToFavoritesRequest = () => ({

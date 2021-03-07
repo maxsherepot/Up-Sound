@@ -18,6 +18,31 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
 
+    case Types.DELETE_FROM_FAVORITES_REQUEST: {
+      return {
+        ...state,
+        loading: true,
+      }
+    }
+    case Types.DELETE_FROM_FAVORITES_SUCCESS: {
+      return {
+        ...state,
+        successMessage: action.payload,
+        loading: false,
+        errorMessage: null,
+      }
+    }
+    case Types.DELETE_FROM_FAVORITES_FAILURE: {
+      return {
+        ...state,
+        errorMessage: action.payload,
+        successMessage: null,
+        favoriteAlbums: null,
+        loading: false,
+      }
+    }
+
+
     case Types.ADD_TO_FAVORITES_REQUEST: {
       return {
         ...state,
@@ -87,7 +112,9 @@ const reducer = (state = initialState, action) => {
     case Types.ALBUM_REQUEST: {
       return {
         ...state,
-        loading: true
+        loading: true,
+        errorMessage: null,
+        successMessage: null
       }
     }
     case Types.ALBUM_SUCCESS: {

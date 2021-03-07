@@ -1,14 +1,11 @@
 import React from 'react';
-import { addToFavorites, deleteFromFavorites } from "../../helpers/albums";
 
 
 
-const AlbumDetails = ({ album, isFavorite,addToFavorites }) => {
-  // const userData = JSON.parse(localStorage.getItem("userData"))
-  // const email = userData.email;
+const AlbumDetails = ({ album, isFavorite, addToFavorites, deleteFromFavorites }) => {
 
   const toFavorites = item => {
-    addToFavorites( item )
+    addToFavorites(item)
   }
 
   const deleteFavorite = item => {
