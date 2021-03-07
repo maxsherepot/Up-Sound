@@ -16,26 +16,40 @@ const AlbumInfo = props => {
 
   useEffect(() => {
     getAlbum(albumId)
-  }, []);
 
-  useEffect(() => {
-    toast.error(errorMessage, {
-      position: "top-right",
-      autoClose: 3000,
-    })
-  }, [errorMessage])
+    if (errorMessage) {
+      toast.error(errorMessage, {
+        position: "top-right",
+        autoClose: 3000,
+      })
+    }
 
-  useEffect(() => {
-    toast.success(successMessage, {
-      position: "top-right",
-      autoClose: 3000,
-    })
-  }, [successMessage])
+    if (successMessage) {
+      toast.success(successMessage, {
+        position: "top-right",
+        autoClose: 3000,
+      })
+    }
+  }, [errorMessage, successMessage]);
+
+  // useEffect(() => {
+  //   toast.error(errorMessage, {
+  //     position: "top-right",
+  //     autoClose: 3000,
+  //   })
+  // }, [errorMessage])
+
+  // useEffect(() => {
+  //   toast.success(successMessage, {
+  //     position: "top-right",
+  //     autoClose: 3000,
+  //   })
+  // }, [successMessage])
 
   const toFavorites = item => {
     addToFavorites({ email, ...item })
-    //console.log("{ email, ...item }",{ email, ...item })
   }
+  console.log("errorMessage:", errorMessage, "successMessage:", successMessage)
 
 
   return (
@@ -62,7 +76,6 @@ const AlbumInfo = props => {
 const mapStateToProps = state => ({
   albumId: state.albums.albumId,
   album: state.albums.album,
-
   loading: state.albums.loading,
   error: state.albums.error,
   errorMessage: state.albums.errorMessage,

@@ -75,8 +75,8 @@ export const addToFavoritesRequest = data => {
 
     addToFavorites(data)
       .then(res => {
-        if (res.status === 200 || 304) {
-          dispatch(addToFavoritesSuccess(res));
+        if (res.status === 201 ) {
+          dispatch(addToFavoritesSuccess(res.data.message));
 
         } else {
           dispatch(addToFavoritesFailure(res));
@@ -134,7 +134,7 @@ const addToFavoritesSuccess = payload => ({
 
 const addToFavoritesFailure = error => ({
   type: Types.ADD_TO_FAVORITES_FAILURE,
-  payload: { error }
+  payload: error
 });
 
 

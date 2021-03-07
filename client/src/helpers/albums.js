@@ -16,13 +16,13 @@ export async function getFavoriteAlbums(email) {
 export async function addToFavorites(data) {
 
   return await axiosInstance.post("albums/favorites", data)
-    .then(response => response.data.message)
-    //console.log("response.data.message:", response.data.message))
-    //  return response.data.message
+    .then(response => response)
 
     .catch(err => {
+      if (err.response) {
+        return err.response.data.message
+      }
       return err.message
-      // console.log("err.message", err.message)
     });
 };
 

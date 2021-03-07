@@ -21,7 +21,7 @@ const reducer = (state = initialState, action) => {
     case Types.ADD_TO_FAVORITES_REQUEST: {
       return {
         ...state,
-        loading: true
+        loading: true,
       }
     }
     case Types.ADD_TO_FAVORITES_SUCCESS: {
@@ -29,12 +29,14 @@ const reducer = (state = initialState, action) => {
         ...state,
         successMessage: action.payload,
         loading: false,
+        errorMessage: null,
       }
     }
     case Types.ADD_TO_FAVORITES_FAILURE: {
       return {
         ...state,
         errorMessage: action.payload,
+        successMessage: null,
         loading: false,
       }
     }

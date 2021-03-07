@@ -26,7 +26,7 @@ router.post('/favorites', jsonParser, async (req, res) => {
         const { title, year, author, image, email } = req.body
         const candidate = await collection.findOne({ email, title, author })
         if (candidate) {
-            return res.status(400).json({ message: 'Такой альбом уже существует' })
+            return res.status(400).json({ message: 'Already in favorites' })
         }
         const album = new Album({ title, year, author, image, email })
         await collection.insertOne(album)
