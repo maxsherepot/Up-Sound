@@ -32,8 +32,8 @@ const AlbumDetails = ({ album, isFavorite, addToFavorites, deleteFromFavorites }
             <h4 className="card-title specialColor">{album.title}</h4>
             <h5 className="">{album.author}</h5>
             <div>{album.year}</div>
-            <div>14 tracks</div>
-            <div> 41 minutes</div>
+            <div>{album.tracks} tracks</div>
+            <div>{album.duration}</div>
           </div>
 
           <div className="AlbumButtons pt-4">
@@ -42,19 +42,21 @@ const AlbumDetails = ({ album, isFavorite, addToFavorites, deleteFromFavorites }
             <div className="d-flex justify-content-between">
               <div className="socialButtons">
                 <button className="btn p-0 albumButton">
-                  <img
-                    className="img-fluid"
-                    src={Spotify}
-                    alt="Spotify"
-                    />
+                  <a href={album.spotify_link}>
+                    <img
+                      className="img-fluid"
+                      src={Spotify}
+                      alt="Spotify" />
+                  </a>
                 </button>
 
                 <button className="btn p-0 albumButton">
-                  <img
-                    className="img-fluid"
-                    src={YouTubeMusic}
-                    alt="YouTubeMusic"
-                  />
+                  <a href={album.youTubeMusic_link}>
+                    <img
+                      className="img-fluid"
+                      src={YouTubeMusic}
+                      alt="YouTubeMusic" />
+                  </a>
                 </button>
               </div>
 
