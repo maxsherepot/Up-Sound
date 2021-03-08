@@ -5,6 +5,7 @@ import React from 'react';
 const FormInput = props => {
     const { changeHandler, registerHandler, loginHandler, loading, form } = props;
  
+    
     return (
         <form
             onSubmit={() => registerHandler()}

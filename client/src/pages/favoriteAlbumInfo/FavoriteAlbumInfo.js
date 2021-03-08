@@ -4,32 +4,18 @@ import Loader from '../../components/loader/Loader';
 import { getFavoriteAlbumRequest, deleteFromFavoritesRequest } from "../../store/albums/actions";
 import ErrorMessage from '../../components/errorMessage/ErrorMessage';
 import AlbumDetails from '../../components/albums/AlbumDetails';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from "react-router-dom"
 
 
+
 const FavoriteAlbumInfo = props => {
-  const { albumId, errorMessage, successMessage, getFavoriteAlbum, favoriteAlbum, loading, error, deleteFromFavorites } = props;
+  const { albumId, getFavoriteAlbum, favoriteAlbum, loading, error, deleteFromFavorites } = props;
   const history = useHistory()
 
   useEffect(() => {
     getFavoriteAlbum(albumId)
-
-    if (errorMessage) {
-      toast.error(errorMessage, {
-        position: "top-right",
-        autoClose: 2000,
-      })
-    }
-
-    if (successMessage) {
-      toast.success(successMessage, {
-        position: "top-right",
-        autoClose: 2000,
-      })
-    }
-  }, [errorMessage, successMessage]);
+  }, [albumId]);
 
   const deleteFavorite = async id => {
     await deleteFromFavorites(id)

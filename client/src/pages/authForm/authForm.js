@@ -3,31 +3,22 @@ import { getRegisterRequest, getLoginRequest } from "../../store/auth/actions";
 import { connect } from 'react-redux';
 import Loader from '../../components/loader/Loader';
 import FormInput from './FormInput';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import showToasts from '../../assets/functions/toasts/showToasts';
 
 
 const AuthForm = props => {
   const { user, error, loading } = props;
   const [form, setForm] = useState({ email: "", password: "" });
 
+  useEffect(() => {
+    showToasts({ errorMessage: error, successMessage: user })
+  }, [error, user]);
+
   const changeHandler = event => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
-
-  useEffect(() => {
-    toast.error(error, {
-      position: "top-right",
-      autoClose: 2000,
-    })
-  }, [error])
-
-  useEffect(() => {
-    toast.success(user, {
-      position: "top-right",
-      autoClose: 2000,
-    })
-  }, [user])
 
   const registerHandler = event => {
     event.preventDefault();
@@ -38,6 +29,7 @@ const AuthForm = props => {
     event.preventDefault();
     props.login(form);
   };
+
 
 
   return (

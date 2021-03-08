@@ -4,8 +4,9 @@ import ErrorMessage from "../../components/errorMessage/ErrorMessage"
 import { connect } from "react-redux";
 import { getFavoriteAlbumsRequest } from "../../store/albums/actions";
 import AlbumCard from "../../components/albums/AlbumCard";
+import { ToastContainer } from 'react-toastify';
+import showToasts from '../../assets/functions/toasts/showToasts';
 
-import { ToastContainer, toast } from 'react-toastify';
 
 
 const FavoriteAlbumsPage = props => {
@@ -17,22 +18,9 @@ const FavoriteAlbumsPage = props => {
   useEffect(() => {
     getFavoriteAlbums(email)
 
-    if (errorMessage) {
-      toast.error(errorMessage, {
-        position: "top-right",
-        autoClose: 2000,
-      })
-    }
-
-    if (successMessage) {
-      toast.success(successMessage, {
-        position: "top-right",
-        autoClose: 2000,
-      })
-    }
+    showToasts({ errorMessage, successMessage })
   }, [errorMessage, successMessage]);
 
-  console.log("errorMessage:", errorMessage, "successMessage:", successMessage)
 
 
   return (
