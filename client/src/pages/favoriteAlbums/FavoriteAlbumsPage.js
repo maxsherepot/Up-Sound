@@ -6,7 +6,6 @@ import { getFavoriteAlbumsRequest } from "../../store/albums/actions";
 import AlbumCard from "../../components/albums/AlbumCard";
 
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 
 const FavoriteAlbumsPage = props => {

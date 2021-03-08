@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from "react-redux";
 import Loader from '../../components/loader/Loader';
-import { getAlbumRequest, addToFavoritesRequest,deleteFromFavoritesRequest } from "../../store/albums/actions";
+import { getAlbumRequest, addToFavoritesRequest } from "../../store/albums/actions";
 import AlbumDetails from '../../components/albums/AlbumDetails';
 import ErrorMessage from '../../components/errorMessage/ErrorMessage';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import showToasts from '../../assets/functions/toasts/showToasts';
 
 
 
@@ -17,30 +17,18 @@ const AlbumInfo = props => {
   useEffect(() => {
     getAlbum(albumId)
 
-    if (errorMessage) {
-      toast.error(errorMessage, {
-        position: "top-right",
-        autoClose: 2000,
-      })
-    }
-
-    if (successMessage) {
-      toast.success(successMessage, {
-        position: "top-right",
-        autoClose: 2000,
-      })
-    }
+    showToasts({ errorMessage, successMessage })
   }, [errorMessage, successMessage]);
 
   const toFavorites = item => {
     addToFavorites({ email, ...item })
-  } 
-  //console.log("errorMessage:", errorMessage, "successMessage:", successMessage)
+  }
 
 
   return (
     <div className="container">
       <ToastContainer />
+
       {loading || !album ?
         <Loader />
         :
@@ -53,7 +41,6 @@ const AlbumInfo = props => {
             addToFavorites={toFavorites}
           />
       }
-
     </div>
   );
 };
