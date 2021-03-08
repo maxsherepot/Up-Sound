@@ -19,14 +19,14 @@ const FavoriteAlbumInfo = props => {
     if (errorMessage) {
       toast.error(errorMessage, {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2000,
       })
     }
 
     if (successMessage) {
       toast.success(successMessage, {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2000,
       })
     }
   }, [errorMessage, successMessage]);

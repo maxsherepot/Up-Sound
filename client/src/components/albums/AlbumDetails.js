@@ -1,4 +1,6 @@
 import React from 'react';
+import YouTubeMusic from '../../assets/images/btnsLogo/Youtube_Music_logo.svg';
+import Spotify from '../../assets/images/btnsLogo/Spotify_Logo.png';
 
 
 
@@ -42,16 +44,16 @@ const AlbumDetails = ({ album, isFavorite, addToFavorites, deleteFromFavorites }
                 <button className="btn p-0 albumButton">
                   <img
                     className="img-fluid"
-                    src="https://music.youtube.com/img/on_platform_logo_dark.svg"
-                    alt="..."
-                  />
+                    src={Spotify}
+                    alt="Spotify"
+                    />
                 </button>
 
                 <button className="btn p-0 albumButton">
                   <img
                     className="img-fluid"
-                    src="https://hantavirusofficial.com/wp-content/uploads/2019/12/Spotify_Logo_RGB_White.png"
-                    alt="..."
+                    src={YouTubeMusic}
+                    alt="YouTubeMusic"
                   />
                 </button>
               </div>
