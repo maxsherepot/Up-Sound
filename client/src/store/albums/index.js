@@ -30,6 +30,7 @@ const reducer = (state = initialState, action) => {
         successMessage: action.payload,
         loading: false,
         errorMessage: null,
+        favoriteAlbums: null,
       }
     }
     case Types.DELETE_FROM_FAVORITES_FAILURE: {
@@ -70,7 +71,9 @@ const reducer = (state = initialState, action) => {
     case Types.ALBUMS_REQUEST: {
       return {
         ...state,
-        loading: true
+        loading: true,
+        errorMessage: null,
+        successMessage: null
       }
     }
     case Types.ALBUMS_SUCCESS: {
@@ -122,6 +125,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         album: action.payload,
         loading: false,
+        errorMessage: null,
+        successMessage: null
       }
     }
     case Types.ALBUM_FAILURE: {
@@ -129,13 +134,15 @@ const reducer = (state = initialState, action) => {
         ...state,
         error: action.payload,
         loading: false,
+        errorMessage: null,
+        successMessage: null
       }
     }
-
+    
     case Types.FAVORITE_ALBUM_REQUEST: {
       return {
         ...state,
-        loading: true
+        loading: true,
       }
     }
     case Types.FAVORITE_ALBUM_SUCCESS: {

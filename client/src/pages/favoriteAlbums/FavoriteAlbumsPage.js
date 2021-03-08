@@ -5,24 +5,41 @@ import { connect } from "react-redux";
 import { getFavoriteAlbumsRequest } from "../../store/albums/actions";
 import AlbumCard from "../../components/albums/AlbumCard";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const FavoriteAlbumsPage = props => {
-  const { getFavoriteAlbums, loading, error, favoriteAlbums } = props;
+  const { getFavoriteAlbums, loading, error, favoriteAlbums, errorMessage, successMessage } = props;
 
   const userData = JSON.parse(localStorage.getItem("userData") || null)
   const email = userData.email;
 
-
   useEffect(() => {
     getFavoriteAlbums(email)
-  }, []);
 
+    if (errorMessage) {
+      toast.error(errorMessage, {
+        position: "top-right",
+        autoClose: 2000,
+      })
+    }
+
+    if (successMessage) {
+      toast.success(successMessage, {
+        position: "top-right",
+        autoClose: 2000,
+      })
+    }
+  }, [errorMessage, successMessage]);
+
+  console.log("errorMessage:", errorMessage, "successMessage:", successMessage)
 
 
   return (
     <div className="container">
       <h1 className="text-light text-center">Favorite Albums</h1>
+      <ToastContainer />
 
       {loading || !favoriteAlbums ?
         <Loader />
@@ -54,6 +71,8 @@ const mapStateToProps = state => ({
   favoriteAlbums: state.albums.favoriteAlbums,
   loading: state.albums.loading,
   error: state.albums.error,
+  errorMessage: state.albums.errorMessage,
+  successMessage: state.albums.successMessage,
 });
 
 

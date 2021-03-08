@@ -18,14 +18,14 @@ const AuthForm = props => {
   useEffect(() => {
     toast.error(error, {
       position: "top-right",
-      autoClose: 3000,
+      autoClose: 2000,
     })
   }, [error])
 
   useEffect(() => {
     toast.success(user, {
       position: "top-right",
-      autoClose: 3000,
+      autoClose: 2000,
     })
   }, [user])
 
