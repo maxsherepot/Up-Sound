@@ -3,9 +3,9 @@ import Loader from "../../components/loader/Loader"
 import ErrorMessage from "../../components/errorMessage/ErrorMessage"
 import { connect } from "react-redux";
 import { getFavoriteAlbumsRequest } from "../../store/albums/actions";
-import AlbumCard from "../../components/albums/AlbumCard";
 import { ToastContainer } from 'react-toastify';
 import showToasts from '../../assets/functions/toasts/showToasts';
+import Pagination from '../../components/pagination/Pagination';
 
 
 
@@ -38,20 +38,13 @@ const FavoriteAlbumsPage = props => {
             ?
             <h3 className="text-light text-center">No favorite albums yet</h3>
             :
-            <div className="d-flex justify-content-between mt-5 text-light">
-              {favoriteAlbums.map(item => {
-                return <AlbumCard
-                  key={item._id}
-                  item={item}
-                  albumIsFavorite={true} />
-              })
-              }
-            </div>
+            <Pagination
+              data={favoriteAlbums}
+              isFavorite={true} />
       }
     </div >
   );
 };
-
 
 
 const mapStateToProps = state => ({
