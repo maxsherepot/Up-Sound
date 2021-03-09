@@ -13,8 +13,16 @@ body {
     background-color:$special-color;
 }
 
-.card,.loginButton, .registerButton,.favoriteButton{
+.loginButton, .registerButton,.favoriteButton{
     max-width: 200px;
+    &:hover {
+        transition: 100ms;
+        cursor: pointer;
+        box-shadow: 0px 20px 30px -20px $special-color;
+    }
+}
+
+.card{
     &:hover {
         transition: 100ms;
         cursor: pointer;

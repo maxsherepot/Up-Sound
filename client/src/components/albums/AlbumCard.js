@@ -19,20 +19,21 @@ const AlbumCard = ({ item, setId, albumIsFavorite }) => {
 
 
   return (
-    <div
-      className="card darkShadow"
-      onClick={() => selectAlbum(item._id)}>
+    <div className="col-12 col-md-6 col-lg-3 mb-5">
+      <div className="card darkShadow"
+        onClick={() => selectAlbum(item._id)}>
 
-      <img
-        src={item.image}
-        className="card-img-top"
-        alt="..."
-      />
+        <img
+          src={item.image}
+          className="card-img-top"
+          alt="..."
+        />
 
-      <div className="card-body p-3 text-center bg-dark text-light">
-        <h5 className="card-title">{item.title}</h5>
-        <h6 className="">{item.author}</h6>
-        <span>{item.year}</span>
+        <div className="card-body p-3 text-center bg-dark text-light">
+          <h5 className="card-title">{item.title}</h5>
+          <h6 className="">{item.author}</h6>
+          <span>{item.year}</span>
+        </div>
       </div>
     </div>
   );
