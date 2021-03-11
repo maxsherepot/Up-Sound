@@ -2,8 +2,6 @@ import { axiosInstance } from './baseUrl'
 
 
 
-const errorMessage = "Something went wrong, please try again";
-
 export async function register(data) {
 
   return await axiosInstance.post(`auth/register`, data)
@@ -18,7 +16,7 @@ export async function register(data) {
         throw new Error(err.request.message)
       }
 
-      return errorMessage
+      return err.message
     });
 };
 
@@ -37,7 +35,7 @@ export async function login(data) {
         throw new Error(err.request.message)
       }
 
-      return errorMessage
+      return err.message
     });
 };
 

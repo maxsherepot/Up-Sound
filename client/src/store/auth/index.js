@@ -1,6 +1,7 @@
 import { Types } from './actions';
 
 
+
 const localData = localStorage.getItem("userData")
   ?
   JSON.parse(localStorage.getItem("userData"))
@@ -43,6 +44,7 @@ const reducer = (state = initialState, action) => {
       }
     }
 
+
     case Types.LOGIN_REQUEST: {
       return {
         ...state,
@@ -68,6 +70,7 @@ const reducer = (state = initialState, action) => {
       }
     }
 
+    
     case Types.LOGIN_OUT: {
       return {
         ...state,

@@ -6,13 +6,14 @@ const express = require('express');
 const jsonParser = express.json();
 
 
+
 router.get('/favorites/:email', async (req, res) => {
     const collection = req.app.locals.favoritesCollection;
     const email = req.params.email
     collection.find({ email }).toArray(function (err, favorites) {
 
         if (err) {
-            res.status(500).json({ message: 'favorites error' })
+            res.status(500).json({ message: 'Something went wrong, please try again' })
         }
         res.send(favorites)
     });
@@ -23,17 +24,17 @@ router.post('/favorites', jsonParser, async (req, res) => {
     const collection = req.app.locals.favoritesCollection;
 
     try {
-        const { title, year, author, image, email } = req.body
+        const { title, year, author, image, email, youTubeMusic_link, spotify_link } = req.body
         const candidate = await collection.findOne({ email, title, author })
         if (candidate) {
             return res.status(400).json({ message: 'Already in favorites' })
         }
-        const album = new Album({ title, year, author, image, email })
+        const album = new Album({ title, year, author, image, email, youTubeMusic_link, spotify_link })
         await collection.insertOne(album)
 
         res.status(201).json({ message: 'album added' })
     } catch (e) {
-        res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+        res.status(500).json({ message: 'Something went wrong, please try again' })
     }
 })
 
@@ -51,7 +52,7 @@ router.delete('/favorites/:id', jsonParser, async (req, res) => {
         res.json({ message: 'album deleted' })
 
     } catch (e) {
-        res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+        res.status(500).json({ message: 'Something went wrong, please try again' })
     }
 })
 
@@ -61,7 +62,7 @@ router.get('', async (req, res) => {
     collection.find({}).toArray(function (err, albums) {
 
         if (err) {
-            res.status(500).json({ message: 'albums error' })
+            res.status(500).json({ message: 'Something went wrong, please try again' })
         }
         res.send(albums)
     });
@@ -74,11 +75,12 @@ router.get('/:id', async (req, res) => {
     collection.findOne({ _id: id }, function (err, album) {
 
         if (err) {
-            res.status(500).json({ message: 'album id error' })
+            res.status(500).json({ message: 'Something went wrong, please try again' })
         }
         res.send(album)
     });
 });
+
 
 router.get('/favorites/favoriteAlbum/:id', async (req, res) => {
     const id = new objectId(req.params.id);
@@ -87,7 +89,7 @@ router.get('/favorites/favoriteAlbum/:id', async (req, res) => {
     collection.findOne({ _id: id }, function (err, album) {
 
         if (err) {
-            res.status(500).json({ message: 'favorite album id error' })
+            res.status(500).json({ message: 'Something went wrong, please try again' })
         }
         res.send(album)
     });

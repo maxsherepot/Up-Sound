@@ -39,7 +39,7 @@ router.post('/register', jsonParser,
 
             res.status(201).json({ message: 'Пользователь создан' })
         } catch (e) {
-            res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+            res.status(500).json({ message: 'Something went wrong, please try again' })
         }
     })
 
@@ -80,7 +80,7 @@ router.post('/login', jsonParser,
 
             res.json({ token, userId: user.id })
         } catch (e) {
-            res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+            res.status(500).json({ message: 'Something went wrong, please try again' })
         }
     })
 

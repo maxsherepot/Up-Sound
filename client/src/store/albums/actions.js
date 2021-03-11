@@ -44,8 +44,8 @@ export const getAlbumsRequest = () => {
 
     getAlbums()
       .then(res => {
-        if (res.status === 200) {
-          dispatch(getAlbumsSuccess(res));
+        if (res && res.status === 200) {
+          dispatch(getAlbumsSuccess(res.data));
 
         } else {
           dispatch(getAlbumsFailure(res));
@@ -60,8 +60,8 @@ export const getFavoriteAlbumsRequest = email => {
 
     getFavoriteAlbums(email)
       .then(res => {
-        if (res.status === 200 || 304) {
-          dispatch(getFavoriteAlbumsSuccess(res));
+        if (res && res.status === 200) {
+          dispatch(getFavoriteAlbumsSuccess(res.data));
 
         } else {
           dispatch(getFavoriteAlbumsFailure(res));
@@ -76,7 +76,7 @@ export const addToFavoritesRequest = data => {
 
     addToFavorites(data)
       .then(res => {
-        if (res.status === 201 ) {
+        if (res.status === 201) {
           dispatch(addToFavoritesSuccess(res.data.message));
 
         } else {
@@ -92,7 +92,7 @@ export const deleteFromFavoritesRequest = id => {
 
     deleteFromFavorites(id)
       .then(res => {
-        if (res.status === 200 ) {
+        if (res.status === 200) {
           dispatch(deleteFromFavoritesSuccess(res.data.message));
 
         } else {

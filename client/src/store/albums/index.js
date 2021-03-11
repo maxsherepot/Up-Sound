@@ -79,7 +79,7 @@ const reducer = (state = initialState, action) => {
     case Types.ALBUMS_SUCCESS: {
       return {
         ...state,
-        albums: action.payload.data,
+        albums: action.payload,
         loading: false,
       }
     }
@@ -111,6 +111,7 @@ const reducer = (state = initialState, action) => {
         loading: false,
       }
     }
+
 
     case Types.ALBUM_REQUEST: {
       return {
@@ -160,6 +161,7 @@ const reducer = (state = initialState, action) => {
       }
     }
 
+    
     case Types.SET_ID_FOR_ALBUM: {
       return {
         ...state,
