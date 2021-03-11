@@ -12,8 +12,8 @@ const jsonParser = express.json();
 
 router.post('/register', jsonParser,
     [
-        check('email', 'Некорректный email').isEmail(),
-        check('password', 'Минимальная длина пароля 6 символов').isLength({ min: 6 })
+        check('email', 'Wrong email').isEmail(),
+        check('password', 'Minimum password length is 6 symbols').isLength({ min: 6 })
     ],
     async (req, res) => {
         const collection = req.app.locals.usersCollection;
@@ -23,21 +23,21 @@ router.post('/register', jsonParser,
             if (!errors.isEmpty()) {
                 return res.status(400).json({
                     errors: errors.array(),
-                    message: 'Некорректныe данные при регистрации'
+                    message: 'Wrong register data'
                 })
             }
 
             const { email, password } = req.body
             const candidate = await collection.findOne({ email })
             if (candidate) {
-                return res.status(400).json({ message: 'Такой пользователь уже существует' })
+                return res.status(400).json({ message: 'User already exists' })
             }
 
             const hashedPassword = await bcrypt.hash(password, 12)
             const user = new User({ email, password: hashedPassword })
             await collection.insertOne(user)
 
-            res.status(201).json({ message: 'Пользователь создан' })
+            res.status(201).json({ message: 'User created' })
         } catch (e) {
             res.status(500).json({ message: 'Something went wrong, please try again' })
         }
@@ -46,8 +46,8 @@ router.post('/register', jsonParser,
 
 router.post('/login', jsonParser,
     [
-        check('email', 'Введите корректный email').normalizeEmail().isEmail(),
-        check('password', 'Введите пароль').exists()
+        check('email', 'Enter correct email').normalizeEmail().isEmail(),
+        check('password', 'Enter password').exists()
     ],
     async (req, res) => {
         const collection = req.app.locals.usersCollection;
@@ -57,19 +57,19 @@ router.post('/login', jsonParser,
             if (!errors.isEmpty()) {
                 return res.status(400).json({
                     errors: errors.array(),
-                    message: 'Некорректныe данные при входе в систему'
+                    message: 'Wrong data'
                 })
             }
 
             const { email, password } = req.body
             const user = await collection.findOne({ email })
             if (!user) {
-                return res.status(400).json({ message: 'Пользователь не найден' })
+                return res.status(400).json({ message: 'User not found' })
             }
 
             const isMatch = await bcrypt.compare(password, user.password)
             if (!isMatch) {
-                return res.status(400).json({ message: 'Неверный пароль, попробуйте снова' })
+                return res.status(400).json({ message: 'Wrong password, try again' })
             }
 
             const token = jwt.sign(
