@@ -22,7 +22,8 @@ const reducer = (state = initialState, action) => {
     case Types.REGISTER_REQUEST: {
       return {
         ...state,
-        loading: true
+        loading: true,
+        error: false
       }
     }
     case Types.REGISTER_SUCCESS: {
@@ -66,7 +67,7 @@ const reducer = (state = initialState, action) => {
         loading: false,
       }
     }
-    
+
     case Types.LOGIN_OUT: {
       return {
         ...state,
