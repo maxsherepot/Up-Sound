@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Loader from "../../components/loader/Loader"
 import ErrorMessage from "../../components/errorMessage/ErrorMessage"
 import { connect } from "react-redux";
-import { getAlbumsRequest, getFavoriteAlbumsRequest } from "../../store/albums/actions";
+import { getAlbumsRequest, getFavoriteAlbumsRequest, clearToastMessages } from "../../store/albums/actions";
 import Pagination from '../../components/pagination/Pagination';
 import { ToastContainer } from 'react-toastify';
 import showToasts from '../../assets/functions/toasts/showToasts';
@@ -10,10 +10,13 @@ import showToasts from '../../assets/functions/toasts/showToasts';
 
 
 const AlbumsList = props => {
-  const { getAlbums, loading, error, albums, getFavoriteAlbums, favoriteAlbums, errorMessage, successMessage, isFavorite } = props;
+  const { getAlbums, loading, error, albums, getFavoriteAlbums, favoriteAlbums, errorMessage, successMessage, isFavorite, clearToast } = props;
 
   const userData = JSON.parse(localStorage.getItem("userData") || null)
   const email = userData.email;
+
+  console.log(errorMessage, successMessage)
+
 
   useEffect(() => {
     if (isFavorite) {
@@ -24,7 +27,10 @@ const AlbumsList = props => {
   }, [isFavorite]);
 
   useEffect(() => {
-    showToasts({ errorMessage, successMessage });
+    if (isFavorite) {
+      showToasts({ errorMessage, successMessage });
+      clearToast()
+    }
   }, [errorMessage, successMessage]);
 
 
@@ -84,6 +90,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getAlbums: () => dispatch(getAlbumsRequest()),
+  clearToast: () => dispatch(clearToastMessages()),
   getFavoriteAlbums: email => dispatch(getFavoriteAlbumsRequest(email))
 })
 
