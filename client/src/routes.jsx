@@ -3,9 +3,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import AuthForm from './pages/authForm/AuthForm';
 import AlbumInfo from './pages/albumInfo/AlbumInfo';
-import FavoriteAlbumsPage from './pages/favoriteAlbums/FavoriteAlbumsPage';
 import FavoriteAlbumInfo from './pages/favoriteAlbumInfo/FavoriteAlbumInfo';
-import AlbumsPage from './pages/albums/AlbumsPage';
+import AlbumsList from './pages/albums/AlbumsList';
 
 
 
@@ -16,10 +15,30 @@ const Routes = isAuthenticated => {
       <>
         <Navbar />
         <Switch>
-          <Route path="/albums" component={AlbumsPage} exact />
-          <Route path="/albums/:id" component={AlbumInfo} />
-          <Route path="/favorites" component={FavoriteAlbumsPage} exact />
-          <Route path="/favorites/:id" component={FavoriteAlbumInfo} />
+          <Route path="/albums" exact
+            render={props => (
+              <AlbumsList {...props} isFavorite={false} />
+            )}
+          />
+
+          <Route path="/albums/:id"
+            render={props => (
+              <AlbumInfo {...props} />
+            )}
+          />
+
+          <Route path="/favorites" exact
+            render={props => (
+              <AlbumsList {...props} isFavorite={true} />
+            )}
+          />
+
+          <Route path="/favorites/:id"
+            render={props => (
+              <FavoriteAlbumInfo {...props} />
+            )}
+          />
+
           <Redirect to="/albums" />
         </Switch>
       </ >
