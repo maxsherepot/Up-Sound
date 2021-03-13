@@ -47,7 +47,8 @@ const reducer = (state = initialState, action) => {
     case Types.ADD_TO_FAVORITES_REQUEST: {
       return {
         ...state,
-        loading: true,
+        errorMessage: null,
+        successMessage: null,
       }
     }
     case Types.ADD_TO_FAVORITES_SUCCESS: {
@@ -91,10 +92,11 @@ const reducer = (state = initialState, action) => {
       }
     }
 
+
     case Types.FAVORITE_ALBUMS_REQUEST: {
       return {
         ...state,
-        loading: true
+        loading: true,
       }
     }
     case Types.FAVORITE_ALBUMS_SUCCESS: {
@@ -139,7 +141,7 @@ const reducer = (state = initialState, action) => {
         successMessage: null
       }
     }
-    
+
     case Types.FAVORITE_ALBUM_REQUEST: {
       return {
         ...state,
@@ -161,11 +163,20 @@ const reducer = (state = initialState, action) => {
       }
     }
 
-    
+
     case Types.SET_ID_FOR_ALBUM: {
       return {
         ...state,
         albumId: action.payload
+      }
+    }
+
+
+    case Types.CLEAR_TOAST_MESSAGES: {
+      return {
+        ...state,
+        errorMessage: null,
+        successMessage: null
       }
     }
 

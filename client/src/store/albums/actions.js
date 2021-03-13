@@ -35,6 +35,7 @@ export const Types = {
   DELETE_FROM_FAVORITES_FAILURE: 'DELETE_FROM_FAVORITES_FAILURE',
 
   SET_ID_FOR_ALBUM: 'SET_ID_FOR_ALBUM',
+  CLEAR_TOAST_MESSAGES: 'CLEAR_TOAST_MESSAGES',
 };
 
 
@@ -108,7 +109,7 @@ export const getAlbumRequest = id => {
 
     getAlbum(id)
       .then(res => {
-        if (res.status === 200) {
+        if (res && res.status === 200) {
           dispatch(getAlbumSuccess(res.data));
 
         } else {
@@ -136,6 +137,10 @@ export const getFavoriteAlbumRequest = id => {
 
 export const setIdForAlbum = id => {
   return setId(id);
+};
+
+export const clearToastMessages = () => {
+  return clearToast();
 };
 
 
@@ -233,5 +238,9 @@ const getFavoriteAlbumFailure = error => ({
 const setId = payload => ({
   type: Types.SET_ID_FOR_ALBUM,
   payload
+});
+
+const clearToast = () => ({
+  type: Types.CLEAR_TOAST_MESSAGES
 });
 

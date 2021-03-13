@@ -17,9 +17,11 @@ const FavoriteAlbumsPage = props => {
 
   useEffect(() => {
     getFavoriteAlbums(email)
+  }, [email]);
 
-    showToasts({ errorMessage, successMessage })
-  }, [errorMessage, successMessage]);
+  useEffect(() => {
+    showToasts({ errorMessage, successMessage });
+  }, [errorMessage, successMessage ]);
 
 
 
