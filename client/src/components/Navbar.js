@@ -16,7 +16,7 @@ const Navbar = props => {
 
     return (
         <header className="header">
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
                 <div className="container-fluid">
                     <span className="navbar-brand mr-5" >Navbar</span>
                     <button
@@ -30,10 +30,11 @@ const Navbar = props => {
                         <i className="fas fa-bars"></i>
                     </button>
 
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav">
+                    <div className="collapse navbar-collapse justify-content-between" id="navbarNav">
+                        <ul className="navbar-nav align-items-center">
 
-                            <li className="nav-item">
+
+                            <li className="nav-item mr-3">
                                 <Link to="/albums" className="nav-link">Albums</Link>
                             </li>
 
@@ -41,11 +42,12 @@ const Navbar = props => {
                                 <Link to="/favorites" className="nav-link">Favorites</Link>
                             </li>
 
-                            <button
-                                onClick={() => loginOut()}
-                                className="btn btn-sm btn-light ml-5">Log Out
-                                </button>
                         </ul>
+
+                        <button
+                            onClick={() => loginOut()}
+                            className="btn btn-sm btn-dark specialColor logOutButton">Log Out
+                        </button>
                     </div>
                 </div>
             </nav>
