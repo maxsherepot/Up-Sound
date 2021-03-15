@@ -19,12 +19,14 @@ const AlbumInfo = props => {
 
 
   useEffect(() => {
+    const sessionAlbumId = sessionStorage.getItem("albumId");
+
     if (isFavorite) {
-      getFavoriteAlbum(albumId)
+      getFavoriteAlbum(albumId || sessionAlbumId)
     } else {
-      getAlbum(albumId)
+      getAlbum(albumId || sessionAlbumId)
     }
-  }, [isFavorite]);
+  }, [isFavorite, albumId]);
 
 
   useEffect(() => {
