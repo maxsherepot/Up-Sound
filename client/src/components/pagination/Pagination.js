@@ -7,11 +7,13 @@ import AlbumCard from "../albums/AlbumCard";
 const Pagination = ({ data, isFavorite }) => {
     const userOffset = JSON.parse(sessionStorage.getItem("offset")) || 0;
     const userPage = JSON.parse(sessionStorage.getItem("page")) || 0;
+    const userFavoriteOffset = JSON.parse(sessionStorage.getItem("favOffset")) || 0;
+    const userFavoritePage = JSON.parse(sessionStorage.getItem("favPage")) || 0;
 
     const [perPage, setPerPage] = useState(8);
-    const [offset, setOffset] = useState(userOffset);
+    const [offset, setOffset] = useState(isFavorite ? userFavoriteOffset : userOffset);
     const [elements, setElements] = useState([]);
-    const [currentPage, setCurrentPage] = useState(userPage);
+    const [currentPage, setCurrentPage] = useState(isFavorite ? userFavoritePage : userPage);
     const [pageCount, setPageCount] = useState(0);
 
     useEffect(() => {
@@ -35,9 +37,9 @@ const Pagination = ({ data, isFavorite }) => {
 
     const handlePageClick = data => {
         const selectedPage = data.selected;
-        sessionStorage.setItem("page", selectedPage)
+        { isFavorite ? sessionStorage.setItem("favPage", selectedPage) : sessionStorage.setItem("page", selectedPage) }
         const offset = selectedPage * perPage;
-        sessionStorage.setItem("offset", offset)
+        { isFavorite ? sessionStorage.setItem("favOffset", offset) : sessionStorage.setItem("offset", offset) }
         setCurrentPage(selectedPage)
         setOffset(offset)
         setElementsForCurrentPage();
