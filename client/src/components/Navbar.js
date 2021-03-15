@@ -10,6 +10,7 @@ const Navbar = props => {
 
     const loginOut = () => {
         localStorage.removeItem("userData");
+        sessionStorage.clear();
         props.logOut();
     }
 
