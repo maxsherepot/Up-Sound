@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { onLogOut } from '../store/auth/actions';
+import { onLogOut } from '../../store/auth/actions';
 
 
 
@@ -33,8 +33,6 @@ const Navbar = props => {
 
                     <div className="collapse navbar-collapse justify-content-between" id="navbarNav">
                         <ul className="navbar-nav align-items-center">
-
-
                             <li className="nav-item mr-3">
                                 <Link to="/albums" className="nav-link">Albums</Link>
                             </li>
@@ -43,6 +41,9 @@ const Navbar = props => {
                                 <Link to="/favorites" className="nav-link">Favorites</Link>
                             </li>
 
+                            <li className="nav-item mr-3">
+                                <Link to="/about" className="nav-link">About</Link>
+                            </li>
                         </ul>
 
                         <button

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import Navbar from './components/navbar/Navbar';
 import AuthForm from './pages/authForm/AuthForm';
 import AlbumInfo from './pages/albumInfo/AlbumInfo';
 import AlbumsList from './pages/albums/AlbumsList';
+import About from './pages/about/About';
 
 
 
@@ -35,6 +36,12 @@ const Routes = isAuthenticated => {
           <Route path="/favorites/:id" 
             render={props => (
               <AlbumInfo {...props} isFavorite={true} />
+            )}
+          />
+
+          <Route path="/about" 
+            render={props => (
+              <About {...props} />
             )}
           />
 

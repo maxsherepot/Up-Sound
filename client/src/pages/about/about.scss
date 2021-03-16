@@ -1,0 +1,48 @@
+@import "../../assets/scss/style.scss";
+
+
+.albumButton {
+    height: 3rem;
+    width: 8rem;
+    max-width: 100px;
+    border-radius: .125rem;
+    &:hover {
+        transition: 100ms;
+        cursor: pointer;
+        box-shadow: 0px 20px 30px -20px $special-color;
+    }
+}
+
+.albumTitle {
+    word-break: break-word;
+    font-size: 6rem;
+    font-weight: bold;
+}
+
+
+@media screen and (max-device-width: 992px) {
+    .albumTitle {
+        font-size: 4rem;
+    }
+}
+
+@media screen and (max-device-width: 768px) {  
+    .albumTitle {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-device-width: 576px) {
+    .albumTitle {
+        font-size: 1.5rem;
+    }
+
+    .albumButton {
+        height: 1.5rem;
+        width: 4rem;
+    }
+
+    .deleteButton,.paginationButton{
+        font-size: 60%;
+    }
+}
