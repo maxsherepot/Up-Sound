@@ -1,0 +1,16 @@
+.pagination li {
+    padding: 12px;
+    margin: 4px;
+}
+
+
+@media only screen and (max-device-width: 576px) {
+    .pagination li {
+        padding: 4px;
+        margin: 2px;
+    }
+
+    .paginationButton {
+        padding: 12px 24px;
+    }
+}

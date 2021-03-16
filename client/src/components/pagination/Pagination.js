@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from 'react-paginate';
 import AlbumCard from "../albums/AlbumCard";
-
+import "./pagination.scss"
 
 
 const Pagination = ({ data, isFavorite }) => {

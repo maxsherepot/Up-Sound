@@ -27,6 +27,7 @@ body {
 }
 
 .card{
+    background-color: inherit;
     &:hover {
         transition: 100ms;
         cursor: pointer;
@@ -50,7 +51,3 @@ a:focus {
     outline: none;
 }
 
-.pagination li {
-    padding: 12px;
-    margin: 4px;
-}

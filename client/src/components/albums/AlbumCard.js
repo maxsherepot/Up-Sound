@@ -20,7 +20,7 @@ const AlbumCard = ({ item, setId, albumIsFavorite }) => {
 
 
   return (
-    <div className="col-12 col-md-6 col-lg-3 mb-5">
+    <div className="col-6 col-sm-4 col-lg-3 mb-5">
       <div className="card darkShadow"
         onClick={() => selectAlbum(item._id)}>
 
