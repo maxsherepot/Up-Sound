@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
 import Loader from '../../components/loader/Loader';
 import { getAlbumRequest, addToFavoritesRequest, clearToastMessages, getFavoriteAlbumRequest, deleteFromFavoritesRequest } from "../../store/albums/actions";
@@ -12,6 +12,8 @@ import { useHistory } from "react-router-dom"
 
 const AlbumInfo = props => {
   const { getAlbum, albumId, album, loading, error, errorMessage, successMessage, addToFavorites, clearToast, getFavoriteAlbum, favoriteAlbum, deleteFromFavorites, isFavorite } = props;
+
+  const [sent, setSend] = useState(false)
 
   const userData = JSON.parse(localStorage.getItem("userData"))
   const email = userData.email;
@@ -28,7 +30,6 @@ const AlbumInfo = props => {
     }
   }, [isFavorite, albumId]);
 
-
   useEffect(() => {
     if (!isFavorite) {
       showToasts({ errorMessage, successMessage });
@@ -36,18 +37,23 @@ const AlbumInfo = props => {
     }
   }, [errorMessage, successMessage]);
 
+  useEffect(() => {
+    if (sent && !loading) {
+      history.push("/favorites")
+    }
+  }, [sent, loading]);
 
   const toFavorites = item => {
     addToFavorites({ email, ...item })
   }
 
   const deleteFavorite = async id => {
-    await deleteFromFavorites(id)
-    history.push("/favorites")
+    deleteFromFavorites(id)
+    setSend(true)
   }
 
 
-
+  
   return (
     <div className="container">
       <ToastContainer />
