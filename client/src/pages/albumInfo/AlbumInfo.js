@@ -7,6 +7,7 @@ import ErrorMessage from '../../components/errorMessage/ErrorMessage';
 import { ToastContainer } from 'react-toastify';
 import showToasts from '../../assets/functions/toasts/showToasts';
 import { useHistory } from "react-router-dom"
+import "./albumInfo.scss"
 
 
 
@@ -53,7 +54,6 @@ const AlbumInfo = props => {
   }
 
 
-  
   return (
     <div className="container">
       <ToastContainer />
