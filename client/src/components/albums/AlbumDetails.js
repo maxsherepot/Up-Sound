@@ -38,7 +38,7 @@ const AlbumDetails = ({ album, isFavorite, addToFavorites, deleteFromFavorites }
 
         <div className="albumButtons col-12 col-md-4"></div>
 
-        <div className="albumButtons col-12 pt-4 col-md-8 pl-2 pl-md-4">
+        <div className="albumButtons col-12 pt-4 col-md-8 pl-md-4">
           <div className="text-light">Listen on:</div>
           <div className="d-flex justify-content-between align-items-center">
             <div className="socialButtons">
@@ -65,12 +65,12 @@ const AlbumDetails = ({ album, isFavorite, addToFavorites, deleteFromFavorites }
                 ?
                 <button
                   onClick={() => deleteFavorite(album)}
-                  className="btn btn-dark specialColor favoriteButton px-3">
+                  className="btn btn-dark specialColor deleteButton px-4">
                   Delete from favorites </button>
                 :
                 <button
                   onClick={() => toFavorites(album)}
-                  className="btn btn-dark specialColor deleteButton">
+                  className="btn btn-dark specialColor favoriteButton px-4">
                   Add to favorites</button>
             }
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { onLogOut } from '../../store/auth/actions';
-
+import "./navbar.scss";
 
 
 const Navbar = props => {
@@ -14,43 +14,62 @@ const Navbar = props => {
         props.logOut();
     }
 
+    const navTitleItems = [
+        { linkTo: "/albums", title: "Albums" },
+        { linkTo: "/favorites", title: "Favorites" },
+        { linkTo: "/about", title: "About" }
+    ];
+
+    const navIconItems = [
+        { linkTo: "/albums", iconClassName: "fas fa-home" },
+        { linkTo: "/favorites", iconClassName: "fas fa-heart" },
+        { linkTo: "/about", iconClassName: "fas fa-info-circle" }
+    ];
+
+
 
     return (
         <header className="header">
-            <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+            <nav className="navbar navbar-dark bg-dark">
                 <div className="container-fluid">
-                    <span className="navbar-brand mr-5" >Navbar</span>
-                    <button
-                        className="navbar-toggler"
-                        type="button"
-                        data-mdb-toggle="collapse"
-                        data-mdb-target="#navbarNav"
-                        aria-controls="navbarNav"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <i className="fas fa-bars"></i>
-                    </button>
 
-                    <div className="collapse navbar-collapse justify-content-between" id="navbarNav">
+                    <span className="navbar-brand" >Navbar</span>
+
+                    <div className="justify-content-between" id="navbarNav">
                         <ul className="navbar-nav align-items-center">
-                            <li className="nav-item mr-3">
-                                <Link to="/albums" className="nav-link">Albums</Link>
-                            </li>
 
-                            <li className="nav-item mr-3">
-                                <Link to="/favorites" className="nav-link">Favorites</Link>
-                            </li>
-
-                            <li className="nav-item mr-3">
-                                <Link to="/about" className="nav-link">About</Link>
-                            </li>
+                            {/* show navTitles or navIcons according to monitor width  */}
+                            <div className="navTitles">
+                                {navTitleItems.map(item => {
+                                    return (
+                                        <li
+                                            key={item.title}
+                                            className="nav-item mr-5">
+                                            <Link to={item.linkTo} className="nav-link">{item.title}</Link>
+                                        </li>
+                                    )
+                                })}
+                            </div>
+                            <div className="navIcons">
+                                {navIconItems.map(item => {
+                                    return (
+                                        <li
+                                            key={item.iconClassName}
+                                            className="nav-item mr-2">
+                                            <Link to={item.linkTo} className="nav-link">
+                                                <i className={item.iconClassName}></i>
+                                            </Link>
+                                        </li>
+                                    )
+                                })}
+                            </div>
                         </ul>
-
-                        <button
-                            onClick={() => loginOut()}
-                            className="btn btn-sm btn-dark specialColor logOutButton">Log Out
-                        </button>
                     </div>
+
+                    <span
+                        onClick={() => loginOut()}
+                        className="specialColor logOutButton">Log Out
+                    </span>
                 </div>
             </nav>
         </header>

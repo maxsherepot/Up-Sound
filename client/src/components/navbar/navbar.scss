@@ -1,0 +1,20 @@
+@import "../../assets/scss/style.scss";
+
+
+.navTitles {
+    display: flex    
+}
+
+.navIcons {
+    display: none    
+}
+
+@media screen and (max-device-width: 768px) {  
+    .navTitles {
+        display: none    
+    }
+
+    .navIcons {
+        display: flex    
+    }
+}

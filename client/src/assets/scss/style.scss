@@ -13,8 +13,8 @@ body {
     background-color:$special-color;
 }
 
-.loginButton, .registerButton,.deleteButton,.paginationButton, .logOutButton{
-    max-width: 200px;
+.loginButton, .registerButton,.deleteButton,.favoriteButton,.paginationButton, .logOutButton{
+    max-width: 240px;
     &:hover {
         transition: 100ms;
         cursor: pointer;
