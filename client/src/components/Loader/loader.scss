@@ -1,0 +1,30 @@
+@import "../../assets/scss/style.scss";
+
+
+svg {
+    fill:$special-color;
+    height:70px;
+    width:70px;
+}
+
+.spinner {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}  
+
+
+@media screen and (max-device-width: 768px) {  
+    svg {
+        height:50px;
+        width:50px;
+    }  
+}
+
+@media screen and (max-device-width: 576px) {  
+    svg {
+        height:40px;
+        width:40px;
+    } 
+}
