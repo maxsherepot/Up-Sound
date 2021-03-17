@@ -1,0 +1,23 @@
+
+.height100 {
+    height: 100vh;
+}
+
+.formContainer {
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+@media screen and (max-device-width: 576px) {  
+    .albumTitle {
+        font-size: 2rem;
+    }
+
+    .loginButton, .registerButton {
+        font-size: 70%;
+    }
+}

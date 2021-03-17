@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { getRegisterRequest, getLoginRequest } from "../../store/auth/actions";
 import { connect } from 'react-redux';
 import Loader from '../../components/loader/Loader';
-import FormInput from './FormInput';
+import FormInput from '../../components/authForm/FormInput';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import showToasts from '../../assets/functions/toasts/showToasts';
+import "./authForm.scss"
+
 
 
 const AuthForm = props => {
@@ -33,23 +35,21 @@ const AuthForm = props => {
 
 
   return (
-    <div className="container">
+    <div className="container height100">
       <ToastContainer />
-      <div className="d-flex justify-content-center mt-5">
-        {
-          loading
-            ?
-            <Loader />
-            :
-            <FormInput
-              form={form}
-              changeHandler={changeHandler}
-              registerHandler={registerHandler}
-              loading={loading}
-              loginHandler={loginHandler}
-            />
-        }
-      </div>
+      {
+        loading
+          ?
+          <Loader />
+          :
+          <FormInput
+            form={form}
+            changeHandler={changeHandler}
+            registerHandler={registerHandler}
+            loading={loading}
+            loginHandler={loginHandler}
+          />
+      }
     </div >
   );
 };
