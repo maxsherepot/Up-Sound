@@ -1,4 +1,5 @@
 import React from 'react';
+import FormButton from './FormButton';
 import FormInput from './FormInput';
 
 
@@ -20,7 +21,8 @@ const AuthForm = props => {
                     type="email"
                     id="email"
                     name="email"
-                    errors={errors.email} />
+                    errors={errors.email}
+                />
 
                 <FormInput
                     htmlFor="password"
@@ -30,20 +32,23 @@ const AuthForm = props => {
                     type="password"
                     id="password"
                     name="password"
-                    errors={errors.password} />
+                    errors={errors.password}
+                />
 
                 <div className="pt-2">
-                    <button
-                        onClick={event => loginHandler(event)}
-                        disabled={loading}
+                    <FormButton
+                        title="Login"
+                        onClick={loginHandler}
+                        loading={loading}
                         className="btn specialBg loginButton"
-                    >Login</button>
+                    />
 
-                    <button
-                        disabled={loading}
-                        onClick={event => registerHandler(event)}
+                    <FormButton
+                        title="Register"
+                        onClick={registerHandler}
+                        loading={loading}
                         className="btn btn-dark specialColor registerButton"
-                    >Register</button>
+                    />
                 </div>
             </form>
         </div>
