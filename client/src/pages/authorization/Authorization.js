@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { getRegisterRequest, getLoginRequest } from "../../store/auth/actions";
 import { connect } from 'react-redux';
 import Loader from '../../components/loader/Loader';
-import FormInput from '../../components/authForm/FormInput';
+import FormInput from '../../components/authorization/AuthForm';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import showToasts from '../../assets/functions/toasts/showToasts';
-import "./authForm.scss"
+import "./authorization.scss"
 
 
 
-const AuthForm = props => {
+const Authorization = props => {
   const { user, error, loading } = props;
   const [form, setForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
@@ -58,7 +58,7 @@ const AuthForm = props => {
     validate("registerHandler")
   };
 
-  
+
   const loginHandler = event => {
     event.preventDefault();
     validate("loginHandler")
@@ -101,4 +101,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthForm)
+export default connect(mapStateToProps, mapDispatchToProps)(Authorization)

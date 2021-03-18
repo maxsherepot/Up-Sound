@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
-import AuthForm from './pages/authForm/AuthForm';
+import Authorization from './pages/authorization/Authorization';
 import AlbumInfo from './pages/albumInfo/AlbumInfo';
 import AlbumsList from './pages/albums/AlbumsList';
 import About from './pages/about/About';
@@ -21,7 +21,7 @@ const Routes = isAuthenticated => {
             )}
           />
 
-          <Route path="/albums/:id" 
+          <Route path="/albums/:id"
             render={props => (
               <AlbumInfo {...props} isFavorite={false} />
             )}
@@ -33,13 +33,13 @@ const Routes = isAuthenticated => {
             )}
           />
 
-          <Route path="/favorites/:id" 
+          <Route path="/favorites/:id"
             render={props => (
               <AlbumInfo {...props} isFavorite={true} />
             )}
           />
 
-          <Route path="/about" 
+          <Route path="/about"
             render={props => (
               <About {...props} />
             )}
@@ -53,7 +53,7 @@ const Routes = isAuthenticated => {
 
   return (
     <Switch>
-      <Route exact path="/" component={AuthForm} />
+      <Route exact path="/" component={Authorization} />
       <Redirect to="/" />
     </Switch>
   );

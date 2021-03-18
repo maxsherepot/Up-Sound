@@ -30,7 +30,7 @@ router.post('/register', jsonParser,
             const { email, password } = req.body
             const candidate = await collection.findOne({ email })
             if (candidate) {
-                return res.status(400).json({ message: 'User already exists' })
+                return res.status(400).json({ message: 'Email already exists' })
             }
 
             const hashedPassword = await bcrypt.hash(password, 12)
