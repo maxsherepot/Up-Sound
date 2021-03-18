@@ -3,14 +3,15 @@ import React from 'react';
 
 
 const FormInput = props => {
-    const { changeHandler, registerHandler, loginHandler, loading, form } = props;
+    const { changeHandler, registerHandler, loginHandler, loading, form, errors } = props;
 
 
     return (
         <div className="formContainer">
             <form
                 onSubmit={() => registerHandler()}>
-                <div className="form-outline mb-2">
+                <div className="form-outline mb-4">
+                    <label className="form-label text-light mb-0" htmlFor="email">Email address</label>
                     <input
                         value={form.email}
                         onChange={event => changeHandler(event)}
@@ -19,10 +20,11 @@ const FormInput = props => {
                         className="form-control"
                         name="email"
                     />
-                    <label className="form-label text-light" htmlFor="email">Email address</label>
+                    {errors.email && <span className="text-danger">{errors.email}</span>}
                 </div>
 
-                <div className="form-outline mb-4">
+                <div className="form-outline mb-5">
+                    <label className="form-label text-light mb-0" htmlFor="password">Password</label>
                     <input
                         onChange={event => changeHandler(event)}
                         type="password"
@@ -31,18 +33,18 @@ const FormInput = props => {
                         className="form-control"
                         name="password"
                     />
-                    <label className="form-label text-light" htmlFor="password">Password (min 6 symbols)</label>
+                    {errors.password && <span className="text-danger">{errors.password}</span>}
                 </div>
 
                 <button
-                    onClick={(event) => loginHandler(event)}
+                    onClick={event => loginHandler(event)}
                     disabled={loading}
                     className="btn specialBg loginButton"
                 >Login</button>
 
                 <button
                     disabled={loading}
-                    onClick={(event) => registerHandler(event)}
+                    onClick={event => registerHandler(event)}
                     className="btn btn-dark specialColor registerButton"
                 >Register</button>
             </form>

@@ -13,23 +13,55 @@ import "./authForm.scss"
 const AuthForm = props => {
   const { user, error, loading } = props;
   const [form, setForm] = useState({ email: "", password: "" });
+  const [errors, setErrors] = useState({});
+
 
   useEffect(() => {
     showToasts({ errorMessage: error, successMessage: user })
   }, [error, user]);
 
+
   const changeHandler = event => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
 
-  const registerHandler = event => {
-    event.preventDefault();
-    props.register(form);
+
+  const validate = action => {
+    const errors = {};
+    const { email, password } = form;
+
+    if (!email) {
+      errors.email = 'Required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+      errors.email = "Invalid email address";
+    }
+
+    if (!password) {
+      errors.password = 'Required';
+    } else if (password.length < 6) {
+      errors.password = "Too short, at least 6 symbols"
+    }
+
+    setErrors(errors)
+
+    if (!Object.keys(errors).length && action === "loginHandler") {
+      props.login(form)
+    }
+
+    if (!Object.keys(errors).length && action === "registerHandler") {
+      props.register(form);
+    }
   };
 
+  const registerHandler = event => {
+    event.preventDefault();
+    validate("registerHandler")
+  };
+
+  
   const loginHandler = event => {
     event.preventDefault();
-    props.login(form);
+    validate("loginHandler")
   };
 
 
@@ -48,6 +80,7 @@ const AuthForm = props => {
             registerHandler={registerHandler}
             loading={loading}
             loginHandler={loginHandler}
+            errors={errors}
           />
       }
     </div >
