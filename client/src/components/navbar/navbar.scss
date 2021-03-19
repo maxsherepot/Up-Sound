@@ -9,11 +9,20 @@
     display: none    
 }
 
+.navbar-brand img {
+    max-width: 8rem;
+}
+
+
 @media screen and (max-device-width: 768px) {  
     .navTitles {
         display: none    
     }
-
+    
+    .navbar-brand img {
+        max-width: 6rem;
+    }
+    
     .navIcons {
         display: flex    
     }

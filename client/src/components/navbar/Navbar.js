@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { onLogOut } from '../../store/auth/actions';
 import "./navbar.scss";
+import logo from "../../assets/images/logo/logo.png";
+
 
 
 const Navbar = props => {
@@ -29,47 +31,48 @@ const Navbar = props => {
 
 
     return (
-        <header className="header">
-            <nav className="navbar navbar-dark bg-dark">
-                <div className="container-fluid">
+        <header className="header bg-dark">
+            <nav className="navbar navbar-dark container-fluid py-0">
+                <div className="navbar-brand p-0" >
+                    <Link to="/albums">
+                        <img className="py-2" src={logo}></img>
+                    </Link>
+                </div>
 
-                    <span className="navbar-brand" >Navbar</span>
+                <div className="mr-4" id="navbarNav">
+                    <ul className="navbar-nav align-items-center">
 
-                    <div className="justify-content-between" id="navbarNav">
-                        <ul className="navbar-nav align-items-center">
+                        {/* show navTitles or navIcons according to monitor width  */}
+                        <div className="navTitles">
+                            {navTitleItems.map(item => {
+                                return (
+                                    <li
+                                        key={item.title}
+                                        className="nav-item mr-5">
+                                        <Link to={item.linkTo} className="nav-link">{item.title}</Link>
+                                    </li>
+                                )
+                            })}
+                        </div>
+                        <div className="navIcons">
+                            {navIconItems.map(item => {
+                                return (
+                                    <li
+                                        key={item.iconClassName}
+                                        className="nav-item mr-2">
+                                        <Link to={item.linkTo} className="nav-link">
+                                            <i className={item.iconClassName}></i>
+                                        </Link>
+                                    </li>
+                                )
+                            })}
+                        </div>
+                    </ul>
+                </div>
 
-                            {/* show navTitles or navIcons according to monitor width  */}
-                            <div className="navTitles">
-                                {navTitleItems.map(item => {
-                                    return (
-                                        <li
-                                            key={item.title}
-                                            className="nav-item mr-5">
-                                            <Link to={item.linkTo} className="nav-link">{item.title}</Link>
-                                        </li>
-                                    )
-                                })}
-                            </div>
-                            <div className="navIcons">
-                                {navIconItems.map(item => {
-                                    return (
-                                        <li
-                                            key={item.iconClassName}
-                                            className="nav-item mr-2">
-                                            <Link to={item.linkTo} className="nav-link">
-                                                <i className={item.iconClassName}></i>
-                                            </Link>
-                                        </li>
-                                    )
-                                })}
-                            </div>
-                        </ul>
-                    </div>
-
-                    <span
-                        onClick={() => loginOut()}
-                        className="specialColor logOutButton">Log Out
-                    </span>
+                <div className="specialColor logOutButton mx-2 mx-md-3"
+                    onClick={() => loginOut()}
+                >Log Out
                 </div>
             </nav>
         </header>

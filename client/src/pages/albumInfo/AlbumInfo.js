@@ -58,12 +58,12 @@ const AlbumInfo = props => {
     <div className="container">
       <ToastContainer />
 
-      {loading || (isFavorite ? !favoriteAlbum : !album)
-        ?
-        <Loader />
+      {error ?
+        <ErrorMessage />
         :
-        error ?
-          <ErrorMessage />
+        loading || (isFavorite ? !favoriteAlbum : !album)
+          ?
+          <Loader />
           :
           <AlbumDetails
             album={isFavorite ? favoriteAlbum : album}

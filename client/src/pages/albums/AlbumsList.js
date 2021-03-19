@@ -14,7 +14,7 @@ const AlbumsList = props => {
 
   const userData = JSON.parse(localStorage.getItem("userData") || null)
   const email = userData.email;
-  
+
   useEffect(() => {
     if (isFavorite) {
       getFavoriteAlbums(email)
@@ -30,18 +30,20 @@ const AlbumsList = props => {
     }
   }, [errorMessage, successMessage]);
 
+  console.log("loading", loading, "error", error)
+
 
 
   return (
     <div className="container">
       <ToastContainer />
 
-      {loading || (isFavorite ? !favoriteAlbums : !albums)
-        ?
-        <Loader />
+      {error ?
+        <ErrorMessage />
         :
-        error ?
-          <ErrorMessage />
+        loading || (isFavorite ? !favoriteAlbums : !albums)
+          ?
+          <Loader />
           :
           (isFavorite && !favoriteAlbums.length) || (!isFavorite && !albums.length)
             ?
