@@ -24,12 +24,12 @@ router.post('/favorites', jsonParser, async (req, res) => {
     const collection = req.app.locals.favoritesCollection;
 
     try {
-        const { title, year, author, image, email, youTubeMusic_link, spotify_link } = req.body
+        const { title, year, author, image, email, duration, tracks, youTubeMusic_link, spotify_link } = req.body
         const candidate = await collection.findOne({ email, title, author })
         if (candidate) {
             return res.status(400).json({ message: 'Already in favorites' })
         }
-        const album = new Album({ title, year, author, image, email, youTubeMusic_link, spotify_link })
+        const album = new Album({ title, year, author, image, email, duration, tracks, youTubeMusic_link, spotify_link })
         await collection.insertOne(album)
 
         res.status(201).json({ message: 'album added' })
