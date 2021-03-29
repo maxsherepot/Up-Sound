@@ -30,8 +30,6 @@ const AlbumsList = props => {
     }
   }, [errorMessage, successMessage]);
 
-  console.log("loading", loading, "error", error)
-
 
 
   return (
