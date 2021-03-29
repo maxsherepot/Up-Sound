@@ -2,7 +2,16 @@ $special-color: #ff0000;
 
 
 body {
-  background-color:rgb(19, 19, 19);
+    background-color:rgb(19, 19, 19);
+    font-family: 'Archivo', sans-serif;
+}
+
+p {
+    line-height: 1.8rem;
+}
+
+h1,h2,h4,h5,.card-title{  
+    font-weight: 800 !important;
 }
 
 .specialColor {
