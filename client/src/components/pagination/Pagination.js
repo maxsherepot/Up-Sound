@@ -59,6 +59,8 @@ const Pagination = ({ data, isFavorite }) => {
         paginationElement = (
             <ReactPaginate
                 previousLabel={previousLabel}
+                pageRangeDisplayed={2}
+                marginPagesDisplayed={1}
                 nextLabel={nextLabel}
                 breakLabel={<span className="gap">...</span>}
                 pageCount={pageCount}
