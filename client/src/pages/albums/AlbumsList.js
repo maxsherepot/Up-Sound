@@ -21,14 +21,14 @@ const AlbumsList = props => {
     } else {
       getAlbums()
     }
-  }, [isFavorite]);
+  }, [isFavorite, getFavoriteAlbums, getAlbums, email]);
 
   useEffect(() => {
     if (isFavorite) {
       showToasts({ errorMessage, successMessage });
       clearToast()
     }
-  }, [errorMessage, successMessage]);
+  }, [errorMessage, successMessage, clearToast, isFavorite]);
 
 
 

@@ -35,7 +35,9 @@ const Navbar = props => {
             <nav className="navbar navbar-dark container-fluid py-0">
                 <div className="navbar-brand p-0" >
                     <Link to="/albums">
-                        <img className="py-2" src={logo}></img>
+                        <img className="py-2" 
+                        alt="log"
+                        src={logo}></img>
                     </Link>
                 </div>
 

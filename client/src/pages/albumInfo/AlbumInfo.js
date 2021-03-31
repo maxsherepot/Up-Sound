@@ -29,20 +29,20 @@ const AlbumInfo = props => {
     } else {
       getAlbum(albumId || sessionAlbumId)
     }
-  }, [isFavorite, albumId]);
+  }, [isFavorite, albumId, getAlbum, getFavoriteAlbum]);
 
   useEffect(() => {
     if (!isFavorite) {
       showToasts({ errorMessage, successMessage });
       return () => clearToast()
     }
-  }, [errorMessage, successMessage]);
+  }, [errorMessage, successMessage, clearToast, isFavorite]);
 
   useEffect(() => {
     if (sent && !loading) {
       history.push("/favorites")
     }
-  }, [sent, loading]);
+  }, [sent, loading, history]);
 
   const toFavorites = item => {
     addToFavorites({ email, ...item })

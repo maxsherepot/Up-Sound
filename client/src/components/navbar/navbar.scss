@@ -2,11 +2,11 @@
 
 
 .navTitles {
-    display: flex    
+    display: flex;   
 }
 
 .navIcons {
-    display: none    
+    display: none;    
 }
 
 .navbar-brand img {
@@ -16,7 +16,7 @@
 
 @media screen and (max-device-width: 768px) {  
     .navTitles {
-        display: none    
+        display: none;    
     }
     
     .navbar-brand img {
@@ -24,6 +24,6 @@
     }
     
     .navIcons {
-        display: flex    
+        display: flex;    
     }
 }
