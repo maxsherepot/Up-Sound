@@ -6,7 +6,7 @@ import FormInput from '../../components/authorization/AuthForm';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import showToasts from '../../assets/functions/toasts/showToasts';
-import "./authorization.scss"
+import "./authorization.scss";
 
 
 
@@ -20,11 +20,9 @@ const Authorization = props => {
     showToasts({ errorMessage: error, successMessage: user })
   }, [error, user]);
 
-
   const changeHandler = event => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
-
 
   const validate = action => {
     const errors = {};
@@ -34,36 +32,33 @@ const Authorization = props => {
       errors.email = 'Required';
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
       errors.email = "Invalid email address";
-    }
+    };
 
     if (!password) {
       errors.password = 'Required';
     } else if (password.length < 6) {
-      errors.password = "Too short, at least 6 symbols"
-    }
-
-    setErrors(errors)
+      errors.password = "Too short, at least 6 symbols";
+    };
+    setErrors(errors);
 
     if (!Object.keys(errors).length && action === "loginHandler") {
-      props.login(form)
-    }
+      props.login(form);
+    };
 
     if (!Object.keys(errors).length && action === "registerHandler") {
       props.register(form);
-    }
+    };
   };
 
   const registerHandler = event => {
     event.preventDefault();
-    validate("registerHandler")
+    validate("registerHandler");
   };
-
 
   const loginHandler = event => {
     event.preventDefault();
-    validate("loginHandler")
+    validate("loginHandler");
   };
-
 
 
   return (
@@ -101,4 +96,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Authorization)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Authorization);

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 
+
 const App = props => {
 	const isAuthenticated = !!props.userData;
 	const routes = Routes(isAuthenticated);
@@ -19,11 +20,10 @@ const App = props => {
 
 const mapStateToProps = state => ({
 	userData: state.auth.userData,
-})
+});
 
 
-export default withRouter(
-	connect(mapStateToProps)(App)
-);
+
+export default withRouter(connect(mapStateToProps)(App));
 
 

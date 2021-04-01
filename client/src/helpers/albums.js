@@ -10,7 +10,7 @@ export async function getFavoriteAlbums(email) {
       if (err.response) {
         return err.response.data.message
       }
-      return err.message
+      return err.message;
     });
 };
 
@@ -36,7 +36,7 @@ export async function deleteFromFavorites(id) {
       if (err.response) {
         return err.response.data.message
       }
-      return err.message
+      return err.message;
     });
 };
 
@@ -49,7 +49,7 @@ export async function getAlbums() {
       if (err.response) {
         return err.response.data.message
       }
-      return err.message
+      return err.message;
     });
 };
 
@@ -62,7 +62,7 @@ export async function getAlbum(id) {
       if (err.response) {
         return err.response.data.message
       }
-      return err.message
+      return err.message;
     });
 };
 
@@ -74,7 +74,7 @@ export async function getFavoriteAlbum(id) {
       if (err.response) {
         return err.response.data.message
       }
-      return err.message
+      return err.message;
     });
 };
 

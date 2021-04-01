@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useCallback } from "react";
 import ReactPaginate from 'react-paginate';
 import AlbumCard from "../albums/AlbumCard";
-import "./pagination.scss"
+import "./pagination.scss";
+
 
 
 const Pagination = ({ data, isFavorite }) => {
@@ -28,40 +29,40 @@ const Pagination = ({ data, isFavorite }) => {
                 );
             });
         setElements(elements);
-    }, [data,isFavorite,offset,perPage]);
+    }, [data, isFavorite, offset, perPage]);
 
     useEffect(() => {
-        setElementsForCurrentPage()
-        setPageCount(Math.ceil(data.length / perPage))
-    }, [data, currentPage,perPage, setElementsForCurrentPage])
+        setElementsForCurrentPage();
+        setPageCount(Math.ceil(data.length / perPage));
+    }, [data, currentPage, perPage, setElementsForCurrentPage]);
 
     const handlePageClick = data => {
         const selectedPage = data.selected;
-        isFavorite ? sessionStorage.setItem("favPage", selectedPage) : sessionStorage.setItem("page", selectedPage)
+        isFavorite ? sessionStorage.setItem("favPage", selectedPage) : sessionStorage.setItem("page", selectedPage);
         const offset = selectedPage * perPage;
-        isFavorite ? sessionStorage.setItem("favOffset", offset) : sessionStorage.setItem("offset", offset)
-        setCurrentPage(selectedPage)
-        setOffset(offset)
+        isFavorite ? sessionStorage.setItem("favOffset", offset) : sessionStorage.setItem("offset", offset);
+        setCurrentPage(selectedPage);
+        setOffset(offset);
         setElementsForCurrentPage();
         window.scrollTo(0, 0);
-    }
+    };
 
-    const previousLabel = <button
-        className="btn btn-dark specialColor paginationButton"
-    >prev</button>
-
-    const nextLabel = <button
-        className="btn btn-dark specialColor paginationButton"
-    >next</button>
+    const btnLabel = label => {
+        return (
+            <button
+                className="btn btn-dark specialColor paginationButton"
+            >{label}</button>
+        );
+    };
 
     let paginationElement;
     if (pageCount > 1) {
         paginationElement = (
             <ReactPaginate
-                previousLabel={previousLabel}
+                previousLabel={btnLabel("prev")}
                 pageRangeDisplayed={2}
                 marginPagesDisplayed={1}
-                nextLabel={nextLabel}
+                nextLabel={btnLabel("next")}
                 breakLabel={<span className="gap">...</span>}
                 pageCount={pageCount}
                 onPageChange={handlePageClick}
@@ -77,7 +78,7 @@ const Pagination = ({ data, isFavorite }) => {
 
 
     return (
-        < >
+        <>
             <div className="row mt-5">
                 {elements}
             </div>

@@ -47,11 +47,10 @@ export const getAlbumsRequest = () => {
       .then(res => {
         if (res && res.status === 200) {
           dispatch(getAlbumsSuccess(res.data));
-
         } else {
           dispatch(getAlbumsFailure(res));
         }
-      })
+      });
   };
 };
 
@@ -63,11 +62,10 @@ export const getFavoriteAlbumsRequest = email => {
       .then(res => {
         if (res && res.status === 200) {
           dispatch(getFavoriteAlbumsSuccess(res.data));
-
         } else {
           dispatch(getFavoriteAlbumsFailure(res));
         }
-      })
+      });
   };
 };
 
@@ -79,11 +77,10 @@ export const addToFavoritesRequest = data => {
       .then(res => {
         if (res.status === 201) {
           dispatch(addToFavoritesSuccess(res.data.message));
-
         } else {
           dispatch(addToFavoritesFailure(res));
         }
-      })
+      });
   };
 };
 
@@ -95,11 +92,10 @@ export const deleteFromFavoritesRequest = id => {
       .then(res => {
         if (res.status === 200) {
           dispatch(deleteFromFavoritesSuccess(res.data.message));
-
         } else {
           dispatch(deleteFromFavoritesFailure(res));
         }
-      })
+      });
   };
 };
 
@@ -111,11 +107,10 @@ export const getAlbumRequest = id => {
       .then(res => {
         if (res && res.status === 200) {
           dispatch(getAlbumSuccess(res.data));
-
         } else {
           dispatch(getAlbumFailure(res));
         }
-      })
+      });
   };
 };
 
@@ -127,11 +122,10 @@ export const getFavoriteAlbumRequest = id => {
       .then(res => {
         if (res.status === 200) {
           dispatch(getFavoriteAlbumSuccess(res.data));
-
         } else {
           dispatch(getFavoriteAlbumFailure(res));
         }
-      })
+      });
   };
 };
 

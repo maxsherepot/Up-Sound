@@ -5,7 +5,6 @@ import React from 'react';
 const FormInput = props => {
     const { htmlFor, label, value, changeHandler, type, id, name, errors } = props;
 
-
     return (
         <div className="form-outline mb-4">
             <label
@@ -25,4 +24,5 @@ const FormInput = props => {
 };
 
 
-export default FormInput
+
+export default FormInput;

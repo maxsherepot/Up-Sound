@@ -14,7 +14,7 @@ const Navbar = props => {
         localStorage.removeItem("userData");
         sessionStorage.clear();
         props.logOut();
-    }
+    };
 
     const navTitleItems = [
         { linkTo: "/albums", title: "Albums" },
@@ -29,21 +29,19 @@ const Navbar = props => {
     ];
 
 
-
     return (
         <header className="header bg-dark">
             <nav className="navbar navbar-dark container-fluid py-0">
                 <div className="navbar-brand p-0" >
                     <Link to="/albums">
-                        <img className="py-2" 
-                        alt="log"
-                        src={logo}></img>
+                        <img className="py-2"
+                            alt="log"
+                            src={logo}></img>
                     </Link>
                 </div>
 
                 <div className="mr-4" id="navbarNav">
                     <ul className="navbar-nav align-items-center">
-
                         {/* show navTitles or navIcons according to monitor width  */}
                         <div className="navTitles">
                             {navTitleItems.map(item => {
@@ -72,7 +70,8 @@ const Navbar = props => {
                     </ul>
                 </div>
 
-                <div className="specialColor logOutButton mx-2 mx-md-3"
+                <div
+                    className="specialColor logOutButton mx-2 mx-md-3"
                     onClick={() => loginOut()}
                 >Log Out
                 </div>
@@ -82,14 +81,11 @@ const Navbar = props => {
 };
 
 
-
 const mapDispatchToProps = dispatch => ({
     logOut: () => dispatch(onLogOut())
 });
 
 
 
-export default withRouter(
-    connect(null, mapDispatchToProps)(Navbar)
-);
+export default withRouter(connect(null, mapDispatchToProps)(Navbar));
 

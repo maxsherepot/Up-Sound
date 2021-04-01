@@ -4,18 +4,17 @@ import { useHistory } from "react-router-dom";
 
 
 const About = () => {
-  const history = useHistory()
+  const history = useHistory();
 
   const toMainPage = () => {
-    history.push("/albums")
-  }
+    history.push("/albums");
+  };
 
 
   return (
     <div className="container text-light">
 
       <h1 className="text-center mt-5"> Welcome to Up Sound Application</h1>
-
       <div className="mt-5 px-md-5">
         <p>
           Here you can discover some great music albums, view the details of each one, listen to them on Spotify or YouTube Music, add to the list of your favorite albums.<br></br>
@@ -38,7 +37,6 @@ const About = () => {
         >To main page
         </button>
       </div>
-
     </div>
   );
 };

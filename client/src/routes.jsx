@@ -20,36 +20,31 @@ const Routes = isAuthenticated => {
               <AlbumsList {...props} isFavorite={false} />
             )}
           />
-
           <Route path="/albums/:id"
             render={props => (
               <AlbumInfo {...props} isFavorite={false} />
             )}
           />
-
           <Route path="/favorites" exact
             render={props => (
               <AlbumsList {...props} isFavorite={true} />
             )}
           />
-
           <Route path="/favorites/:id"
             render={props => (
               <AlbumInfo {...props} isFavorite={true} />
             )}
           />
-
           <Route path="/about"
             render={props => (
               <About {...props} />
             )}
           />
-
           <Redirect to="/albums" />
         </Switch>
       </ >
-    )
-  }
+    );
+  };
 
   return (
     <Switch>
@@ -58,6 +53,7 @@ const Routes = isAuthenticated => {
     </Switch>
   );
 };
+
 
 
 export default Routes;

@@ -9,8 +9,9 @@ export const Types = {
 
   LOGIN_REQUEST: 'LOGIN_REQUEST',
   LOGIN_SUCCESS: 'LOGIN_SUCCESS',
+  LOGIN_FAILURE: 'LOGIN_FAILURE',
+
   LOGIN_OUT: 'LOGIN_OUT',
-  LOGIN_FAILURE: 'LOGIN_FAILURE'
 };
 
 
@@ -26,8 +27,8 @@ export const getRegisterRequest = data => {
       .catch(err => {
         dispatch(onRegisterFailure(err.message))
       })
-  }
-}
+  };
+};
 
 export const getLoginRequest = data => {
   return dispatch => {
@@ -44,8 +45,8 @@ export const getLoginRequest = data => {
       .catch(err => {
         dispatch(onLoginFailure(err.message))
       })
-  }
-}
+  };
+};
 
 export const onLogOut = () => ({
   type: Types.LOGIN_OUT,

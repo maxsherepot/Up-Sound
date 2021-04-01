@@ -6,24 +6,22 @@ import AlbumDetails from '../../components/albums/AlbumDetails';
 import ErrorMessage from '../../components/errorMessage/ErrorMessage';
 import { ToastContainer } from 'react-toastify';
 import showToasts from '../../assets/functions/toasts/showToasts';
-import { useHistory } from "react-router-dom"
-import "./albumInfo.scss"
+import { useHistory } from "react-router-dom";
+import "./albumInfo.scss";
 
 
 
 const AlbumInfo = props => {
   const { getAlbum, albumId, album, loading, error, errorMessage, successMessage, addToFavorites, clearToast, getFavoriteAlbum, favoriteAlbum, deleteFromFavorites, isFavorite } = props;
 
-  const [sent, setSend] = useState(false)
+  const [sent, setSend] = useState(false);
 
-  const userData = JSON.parse(localStorage.getItem("userData"))
+  const userData = JSON.parse(localStorage.getItem("userData"));
   const email = userData.email;
-  const history = useHistory()
-
+  const history = useHistory();
 
   useEffect(() => {
     const sessionAlbumId = sessionStorage.getItem("albumId");
-
     if (isFavorite) {
       getFavoriteAlbum(albumId || sessionAlbumId)
     } else {
@@ -34,7 +32,7 @@ const AlbumInfo = props => {
   useEffect(() => {
     if (!isFavorite) {
       showToasts({ errorMessage, successMessage });
-      return () => clearToast()
+      return () => clearToast();
     }
   }, [errorMessage, successMessage, clearToast, isFavorite]);
 
@@ -45,19 +43,18 @@ const AlbumInfo = props => {
   }, [sent, loading, history]);
 
   const toFavorites = item => {
-    addToFavorites({ email, ...item })
-  }
+    addToFavorites({ email, ...item });
+  };
 
   const deleteFavorite = async id => {
-    deleteFromFavorites(id)
-    setSend(true)
-  }
+    deleteFromFavorites(id);
+    setSend(true);
+  };
 
 
   return (
     <div className="container">
       <ToastContainer />
-
       {error ?
         <ErrorMessage />
         :
@@ -94,7 +91,7 @@ const mapDispatchToProps = dispatch => ({
   addToFavorites: data => dispatch(addToFavoritesRequest(data)),
   getFavoriteAlbum: albumId => dispatch(getFavoriteAlbumRequest(albumId)),
   deleteFromFavorites: id => dispatch(deleteFromFavoritesRequest(id))
-})
+});
 
 
 

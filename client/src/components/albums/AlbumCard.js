@@ -10,7 +10,7 @@ const AlbumCard = ({ item, setId, albumIsFavorite }) => {
 
   const selectAlbum = id => {
     setId(id);
-    sessionStorage.setItem("albumId", id)
+    sessionStorage.setItem("albumId", id);
     albumIsFavorite
       ?
       history.push(`/favorites/${id}`)

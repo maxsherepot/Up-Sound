@@ -7,12 +7,12 @@ import Spotify from '../../assets/images/btnsLogo/Spotify_Logo.png';
 const AlbumDetails = ({ album, isFavorite, addToFavorites, deleteFromFavorites }) => {
 
   const toFavorites = item => {
-    addToFavorites(item)
-  }
+    addToFavorites(item);
+  };
 
   const deleteFavorite = item => {
-    deleteFromFavorites(item._id)
-  }
+    deleteFromFavorites(item._id);
+  };
 
 
   return (
@@ -37,7 +37,6 @@ const AlbumDetails = ({ album, isFavorite, addToFavorites, deleteFromFavorites }
         </div>
 
         <div className="albumButtons col-12 col-md-4"></div>
-
         <div className="albumButtons col-12 pt-4 col-md-8 pl-md-4">
           <div className="text-light">Listen on:</div>
           <div className="d-flex justify-content-between align-items-center">
@@ -73,7 +72,6 @@ const AlbumDetails = ({ album, isFavorite, addToFavorites, deleteFromFavorites }
                   className="btn btn-dark specialColor favoriteButton px-4">
                   Add to favorites</button>
             }
-
           </div>
         </div>
       </div>

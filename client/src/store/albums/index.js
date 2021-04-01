@@ -43,7 +43,6 @@ const reducer = (state = initialState, action) => {
       }
     }
 
-
     case Types.ADD_TO_FAVORITES_REQUEST: {
       return {
         ...state,
@@ -68,7 +67,6 @@ const reducer = (state = initialState, action) => {
       }
     }
 
-
     case Types.ALBUMS_REQUEST: {
       return {
         ...state,
@@ -92,7 +90,6 @@ const reducer = (state = initialState, action) => {
       }
     }
 
-
     case Types.FAVORITE_ALBUMS_REQUEST: {
       return {
         ...state,
@@ -113,7 +110,6 @@ const reducer = (state = initialState, action) => {
         loading: false,
       }
     }
-
 
     case Types.ALBUM_REQUEST: {
       return {
@@ -163,14 +159,12 @@ const reducer = (state = initialState, action) => {
       }
     }
 
-
     case Types.SET_ID_FOR_ALBUM: {
       return {
         ...state,
         albumId: action.payload
       }
     }
-
 
     case Types.CLEAR_TOAST_MESSAGES: {
       return {
@@ -179,10 +173,10 @@ const reducer = (state = initialState, action) => {
         successMessage: null
       }
     }
-
     default: return state
   };
 };
+
 
 
 export default reducer;

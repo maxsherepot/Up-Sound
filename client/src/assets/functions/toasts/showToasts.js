@@ -17,9 +17,10 @@ const showToasts = ({ errorMessage, successMessage }) => {
             autoClose: 2000,
         })
     }
-    return
+    return;
 };
 
 
-export default showToasts
+
+export default showToasts;
 

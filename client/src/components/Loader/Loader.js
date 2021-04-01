@@ -11,7 +11,8 @@ const Spinner = () => {
             <Loader type="Audio" />
         </div>
     );
-}
+};
+
 
 
 export default Spinner;

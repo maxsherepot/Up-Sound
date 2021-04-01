@@ -8,7 +8,6 @@ const localData = localStorage.getItem("userData")
   :
   null;
 
-
 const initialState = {
   user: null,
   loading: false,
@@ -44,7 +43,6 @@ const reducer = (state = initialState, action) => {
       }
     }
 
-
     case Types.LOGIN_REQUEST: {
       return {
         ...state,
@@ -70,17 +68,16 @@ const reducer = (state = initialState, action) => {
       }
     }
 
-    
     case Types.LOGIN_OUT: {
       return {
         ...state,
         userData: null,
       }
     }
-
     default: return state
   };
 };
+
 
 
 export default reducer;

@@ -11,7 +11,7 @@ const schema = new Schema({
     tracks: { type: String, required: true },
     youTubeMusic_link: { type: String, required: true },
     spotify_link: { type: String, required: true },
-})
+});
 
 
 module.exports = model("Album", schema);

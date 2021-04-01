@@ -7,7 +7,6 @@ import FormInput from './FormInput';
 const AuthForm = props => {
     const { changeHandler, registerHandler, loginHandler, loading, form, errors } = props;
 
-
     return (
         <div className="formContainer">
             <form
@@ -23,7 +22,6 @@ const AuthForm = props => {
                     name="email"
                     errors={errors.email}
                 />
-
                 <FormInput
                     htmlFor="password"
                     label="Password"
@@ -34,7 +32,6 @@ const AuthForm = props => {
                     name="password"
                     errors={errors.password}
                 />
-
                 <div className="pt-2">
                     <FormButton
                         title="Login"
@@ -42,7 +39,6 @@ const AuthForm = props => {
                         loading={loading}
                         className="btn specialBg loginButton"
                     />
-
                     <FormButton
                         title="Register"
                         onClick={registerHandler}
@@ -56,4 +52,5 @@ const AuthForm = props => {
 };
 
 
-export default AuthForm
+
+export default AuthForm;
