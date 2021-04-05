@@ -9,7 +9,7 @@ const showToasts = ({ errorMessage, successMessage }) => {
             position: "top-right",
             autoClose: 2000,
         })
-    }
+    };
 
     if (successMessage) {
         return toast.success(successMessage, {
