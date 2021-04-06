@@ -35,7 +35,7 @@ h1,h2,h4,h5,.card-title {
     @include hover-effect;
 }
 
-.btn-dark:not(:disabled):not(.disabled):active {
+.btn-dark:not(:disabled):not(.disabled):active,.btn-dark:focus {
     color:$special-color;
 }
 
